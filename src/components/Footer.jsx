@@ -5,7 +5,10 @@ export default function Footer() {
     <footer className="gu-footer">
       <div className="gu-footer-inner">
         <div className="gu-footer-left">
-          <a href="#" className="gu-logo" style={{color: '#fff'}}>GROW UP</a>
+          <a href="#" className="gu-logo" style={{ display: 'inline-flex', flexDirection: 'column', alignItems: 'flex-start', gap: '0.5rem', color: '#fff' }}>
+            <img src="/logo/g-logo.png" alt="Grow Up Logo" style={{ height: '90px', objectFit: 'contain' }} />
+            <span>GROW UP</span>
+          </a>
           <p className="gu-footer-copy">hello@growup.studio</p>
           <p className="gu-footer-copy" style={{marginTop: '2rem'}}>© 2026 Grow Up. All content we make? Yours.</p>
         </div>

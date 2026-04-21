@@ -1032,7 +1032,7 @@ body {
 .flow-line {
   width: 2px;
   height: 120px;
-  background: linear-gradient(to bottom, #bef264, #eee);
+  background: linear-gradient(to bottom, #b2e355, #eee);
   position: relative;
 }
 
@@ -1490,7 +1490,7 @@ body {
   letter-spacing: -0.05em;
   width: 90px;
   flex-shrink: 0;
-  background: linear-gradient(to top, #d9f99d 50%, #222 50%);
+  background: linear-gradient(to top, #b2e355 50%, #222 50%);
   background-size: 100% 200%;
   background-position: 0 0%;
   -webkit-background-clip: text;
@@ -1524,7 +1524,7 @@ body {
 
 .svc-item:hover .svc-visual {
   opacity: 1;
-  transform: translateX(0);
+  transform: translateX(0) scale(1.15);
 }
 
 .svc-video {
@@ -1822,7 +1822,7 @@ body {
   transform: translateX(-50%);
   width: 100%;
   height: 400px;
-  background: radial-gradient(circle at 50% 0%, rgba(132, 204, 22, 0.08) 0%, transparent 70%);
+  background: radial-gradient(circle at 50% 0%, rgba(178, 227, 85, 0.08) 0%, transparent 70%);
   pointer-events: none;
   z-index: 0;
 }

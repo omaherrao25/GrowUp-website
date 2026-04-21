@@ -7,7 +7,10 @@ export default function Nav() {
   return (
     <nav className="gu-nav">
       <div className="gu-nav-inner">
-        <Link to="/" className="gu-logo">GROW UP</Link>
+        <Link to="/" className="gu-logo" style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
+          <img src="/logo/g-logo.png" alt="Grow Up Logo" style={{ height: '60px', objectFit: 'contain' }} />
+          <span>GROW UP</span>
+        </Link>
         <ul className="gu-nav-links">
           <li><Link to="/" className={pathname === '/' ? 'active' : ''}>HOME</Link></li>
           <li><Link to="/services" className={pathname === '/services' ? 'active' : ''}>SERVICES</Link></li>
