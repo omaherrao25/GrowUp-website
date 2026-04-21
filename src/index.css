@@ -940,7 +940,7 @@ body {
 ───────────────────────────────────────────── */
 .problem-section {
   background: #fff;
-  padding: 12rem 4% 10rem;
+  padding: 5rem 4% 8rem;
   color: #000;
   position: relative;
   overflow: hidden;
@@ -1425,13 +1425,12 @@ body {
 }
 
 /* ─────────────────────────────────────────────
-   GROW UP - SERVICES (OVERRIDE FOR PAGE)
+   GROW UP - SERVICES
 ───────────────────────────────────────────── */
-.services-page .services-section {
-  padding-top: 0;
-}
+.services-page .services-section { padding-top: 0; }
+
 .services-section {
-  padding: 8rem 4%;
+  padding: 8rem 4% 3rem;
   background: #000;
   color: #fff;
 }
@@ -1462,76 +1461,135 @@ body {
 .services-list {
   display: flex;
   flex-direction: column;
+  margin-top: 2rem;
 }
+
+/* Each row */
 .svc-item {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 2.5rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  overflow: hidden;
   transition: background 0.4s ease;
-  position: relative;
 }
 .svc-item:last-child {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
-.svc-main-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  cursor: pointer;
-}
-.svc-left {
+
+/* Top row: number | video | title — always visible */
+.svc-top-row {
   display: flex;
   align-items: center;
-  gap: 4.5rem;
+  gap: 3rem;
+  padding: 1.6rem 0;
+  cursor: default;
 }
+
+/* Number */
 .svc-num {
-  font-size: 3.5rem;
-  font-weight: 900;
-  line-height: 1;
-  letter-spacing: -0.05em;
-  width: 90px;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: rgba(255,255,255,0.4);
+  width: 56px;
   flex-shrink: 0;
-  background: linear-gradient(to top, #b2e355 50%, #222 50%);
-  background-size: 100% 200%;
-  background-position: 0 0%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  transition: background-position 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.svc-item:hover .svc-num {
-  background-position: 0 100%;
-}
-.svc-title {
-  font-size: 1.5rem;
-  font-weight: 900;
-  letter-spacing: -0.02em;
-  color: #fff;
-  transition: transform 0.4s ease;
+  font-style: italic;
 }
 
-.svc-visual {
-  transform: translateX(30px);
-  width: 420px;
+/* Video thumbnail - grows on hover */
+.svc-thumb {
+  width: 180px;
   aspect-ratio: 16 / 9;
-  border-radius: 20px;
+  border-radius: 12px;
   overflow: hidden;
-  background: #f0f0f0;
-  opacity: 0;
-  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 30px 60px rgba(0,0,0,0.15);
-  pointer-events: none;
-  z-index: 10;
+  flex-shrink: 0;
+  background: #111;
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+              aspect-ratio 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+              border-radius 0.4s ease;
 }
-
-.svc-item:hover .svc-visual {
-  opacity: 1;
-  transform: translateX(0) scale(1.15);
+.svc-item:hover .svc-thumb {
+  width: 320px;
+  aspect-ratio: 4 / 3;
+  border-radius: 18px;
 }
-
-.svc-video {
+.svc-thumb-video {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
+
+/* Title - grows on hover */
+.svc-title {
+  font-size: clamp(1.8rem, 3vw, 3rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  color: #fff;
+  flex: 1;
+  line-height: 1;
+  transition: color 0.3s ease, font-size 0.4s ease;
+}
+.svc-item:hover .svc-title {
+  color: #b2e355;
+  font-size: clamp(2.2rem, 4vw, 4rem);
+}
+
+/* Expandable details - slides in on hover */
+.svc-expand {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.4s ease;
+  opacity: 0;
+}
+.svc-item:hover .svc-expand {
+  max-height: 300px;
+  opacity: 1;
+}
+.svc-expand-inner {
+  display: flex;
+  gap: 4rem;
+  padding: 0.5rem 0 2rem 239px; /* align under title: 56px + 180px + 3rem gap */
+  align-items: flex-start;
+}
+.svc-item:hover .svc-expand-inner {
+  padding-left: 419px; /* align under title when thumb grows: 56px + 320px + 3rem gap */
+  transition: padding-left 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.svc-desc {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.65);
+  max-width: 400px;
+  flex-shrink: 0;
+}
+.svc-bullets {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.svc-bullets li {
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.75);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.svc-bullets li::before {
+  content: '';
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #b2e355;
+  flex-shrink: 0;
+}
+
+
 
 /* ─────────────────────────────────────────────
    GROW UP - DISTRIBUTION ENGINE
@@ -1585,7 +1643,7 @@ body {
 /* ─────────────────────────────────────────────
    GROW UP - THE WORK
 ───────────────────────────────────────────── */
-.work-section { background: #F8F8F8; padding: 10rem 4%; }
+.work-section { background: #F8F8F8; padding: 3rem 4% 8rem; }
 .work-inner { max-width: 1400px; margin: 0 auto; }
 .work-header {
   display: flex; justify-content: space-between; align-items: flex-end;
@@ -1628,7 +1686,7 @@ body {
   line-height: 1.5; 
   margin-top: 0.5rem;
 }
-.work-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+.work-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
 .work-card { display: flex; flex-direction: column; gap: 0.5rem; }
 .work-card-link {
   color: inherit;
@@ -1638,9 +1696,10 @@ body {
   transform: translateY(-6px);
 }
 .work-img-placeholder {
-  width: 100%; height: 500px; background: #111; margin-bottom: 1rem;
+  width: 100%; aspect-ratio: 9 / 16; height: auto; background: #111; margin-bottom: 1rem;
   position: relative;
   overflow: hidden;
+  border-radius: 16px;
 }
 .work-video {
   position: absolute;
@@ -1809,7 +1868,7 @@ body {
    PROBLEM SECTION STYLES
 ───────────────────────────────────────────── */
 .problem-section {
-  padding: 10rem 4%;
+  padding: 5rem 4%;
   background: #fff;
   position: relative;
   overflow: hidden;

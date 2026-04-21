@@ -3,31 +3,31 @@ import React from 'react';
 export default function Services() {
   const services = [
     {
-      num: '01',
+      num: '(01)',
       title: 'SOCIAL MEDIA MARKETING',
-      desc: 'Your audience is on Instagram, LinkedIn, YouTube and TikTok right now. They\'re watching someone. It should be you. We build your presence, manage your channels, plan your content calendar and make sure every post has a reason to exist — not just to fill a grid.',
-      benefit: 'Brand recall. Inbound leads. Compounding trust.',
+      desc: 'Your audience is on Instagram, LinkedIn, YouTube and TikTok right now. They\'re watching someone. It should be you.',
+      bullets: ['Content calendars & strategy', 'Channel management', 'Community growth', 'Platform campaigns'],
       video: '/video-1.mp4'
     },
     {
-      num: '02',
+      num: '(02)',
       title: 'VIDEO PRODUCTION',
-      desc: 'Script to screen. Concept to final cut. We handle the entire production pipeline — ideation, scripting, shooting, editing, sound, and delivery. Long form. Short form. Product demos. Founder stories. Testimonials.',
-      benefit: 'People watch. People trust. People buy.',
+      desc: 'Script to screen. Concept to final cut. We handle the entire production pipeline.',
+      bullets: ['Scripting & ideation', 'Shooting & directing', 'Editing, sound & delivery', 'Short & long form'],
       video: '/video-2.mp4'
     },
     {
-      num: '03',
+      num: '(03)',
       title: 'DESIGN',
-      desc: 'First impressions happen in 50 milliseconds. Visual content is 43% more persuasive than text alone. Your thumbnails, social graphics, pitch decks, brand assets and landing pages need to look like they were made with intention.',
-      benefit: 'A brand people remember and take seriously.',
+      desc: 'First impressions happen in 50 milliseconds. Your visuals need to look like they were made with intention.',
+      bullets: ['Brand identity & assets', 'Thumbnails & social graphics', 'Pitch decks', 'Landing page design'],
       video: '/video-3.mp4'
     },
     {
-      num: '04',
+      num: '(04)',
       title: 'WEBSITE',
-      desc: '75% of consumers judge a company\'s credibility based on its website design. Your website is working 24 hours a day selling — or it\'s silently losing you business.',
-      benefit: 'Your website becomes your best salesperson.',
+      desc: '75% of consumers judge credibility from your website. It\'s either selling for you — or silently losing you business.',
+      bullets: ['Web design & development', 'Conversion optimisation', 'SEO-ready architecture', 'Performance & speed'],
       video: '/video-4.mp4'
     }
   ];
@@ -42,15 +42,15 @@ export default function Services() {
         <div className="services-list">
           {services.map((svc, idx) => (
             <div className="svc-item" key={idx}>
-              <div className="svc-main-row">
-                <div className="svc-left">
-                  <div className="svc-num">{svc.num}</div>
-                  <h3 className="svc-title">{svc.title}</h3>
+              {/* Top row: always visible */}
+              <div className="svc-top-row">
+                <span className="svc-num">{svc.num}</span>
+                <div className="svc-thumb">
+                  <video src={svc.video} autoPlay loop muted playsInline className="svc-thumb-video" />
                 </div>
-                <div className="svc-visual">
-                  <video src={svc.video} autoPlay loop muted playsInline className="svc-video" />
-                </div>
+                <h3 className="svc-title">{svc.title}</h3>
               </div>
+
             </div>
           ))}
         </div>

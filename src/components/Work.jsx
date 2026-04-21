@@ -24,6 +24,13 @@ export default function Work() {
       video: '/video-3.mp4',
       href: '/case-study',
     },
+    {
+      name: 'GrowthOps - B2B',
+      metric: '$1.2M PIPELINE',
+      desc: 'End-to-end content distribution system. Repurposed 10 core webinars into 150+ micro-assets. Generated $1.2M in qualified pipeline in Q3.',
+      video: '/video-1.mp4',
+      href: '/case-study',
+    },
   ];
 
   return (
@@ -44,12 +51,6 @@ export default function Work() {
               </div>
               <p className="work-client">{c.name}</p>
               <p className="work-metric">{c.metric}</p>
-              <p
-                className="work-desc"
-                style={{ fontSize: '0.9rem', color: '#666', lineHeight: 1.5, marginTop: '0.5rem' }}
-              >
-                {c.desc}
-              </p>
               <span className="work-card-cta">View case study</span>
             </Link>
           ))}
