@@ -31,137 +31,188 @@ const deliverables = [
 ];
 
 export default function CaseStudyPage() {
+  React.useEffect(() => {
+    const observerOptions = {
+      threshold: 0.1,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('reveal-visible');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal-on-scroll').forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <main className="case-study-page">
-      <section className="case-study-hero">
-        <div className="case-study-hero-inner">
-          <div className="case-study-copy">
-            <p className="case-study-kicker">Case Study / TechFlow SaaS</p>
-            <h1 className="case-study-title">
+    <main className="cs-page">
+      {/* Hero Section */}
+      <section className="cs-hero">
+        <div className="cs-hero-bg">
+          <video
+            src="/video-4.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="cs-hero-video"
+          />
+          <div className="cs-hero-overlay"></div>
+        </div>
+        
+        <div className="cs-container">
+          <div className="cs-hero-content reveal-on-scroll">
+            <div className="cs-kicker-wrap">
+              <span className="cs-kicker-line"></span>
+              <p className="cs-kicker">Case Study / TechFlow SaaS</p>
+            </div>
+            <h1 className="cs-title">
               From zero online presence to a content engine that brought in real pipeline.
             </h1>
-            <p className="case-study-summary">
+            <p className="cs-summary">
               TechFlow needed more than pretty posts. They needed a system that made the brand
               easier to trust, easier to remember, and easier to buy from. We rebuilt the content
               direction around authority, consistency, and conversion.
             </p>
-            <div className="case-study-actions">
-              <Link to="/services" className="btn-primary-blue">Explore Services</Link>
-              <Link to="/" className="case-study-text-link">Back to Home</Link>
+            <div className="cs-hero-actions">
+              <Link to="/services" className="cs-btn-primary">
+                <span>Explore Services</span>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M4.16663 10H15.8333" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M10.8333 5L15.8333 10L10.8333 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </Link>
+              <Link to="/" className="cs-link-back">Back to Home</Link>
             </div>
           </div>
 
-          <div className="case-study-media">
-            <video
-              src="/video-4.mp4"
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="case-study-video"
-            />
-            <div className="case-study-floating-card">
-              <span className="case-study-floating-label">Sprint Window</span>
-              <strong>6 months</strong>
+          <div className="cs-hero-stats reveal-on-scroll">
+            <div className="cs-floating-badge">
+              <span className="cs-badge-dot"></span>
+              <span>6 Month Sprint</span>
             </div>
-          </div>
-        </div>
-
-        <div className="case-study-metrics">
-          {metrics.map((metric) => (
-            <div className="case-study-metric-card" key={metric.label}>
-              <p className="case-study-metric-value">{metric.value}</p>
-              <p className="case-study-metric-label">{metric.label}</p>
+            <div className="cs-metrics-grid">
+              {metrics.map((metric, idx) => (
+                <div className="cs-metric-card" key={metric.label} style={{'--delay': `${idx * 0.1}s`}}>
+                  <h2 className="cs-metric-value">{metric.value}</h2>
+                  <p className="cs-metric-label">{metric.label}</p>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="case-study-story">
-        <div className="case-study-story-grid">
-          <div>
-            <p className="case-study-section-label">The challenge</p>
-            <h2 className="case-study-section-title">
-              Their team had expertise, but the market could not see it.
-            </h2>
-          </div>
-          <div className="case-study-story-copy">
-            <p>
-              Before the engagement, TechFlow had inconsistent posting, no clear narrative, and
-              very little content that supported demos or sales conversations. Traffic was weak,
-              brand recall was lower than competitors, and outreach felt colder than it should.
-            </p>
-            <p>
-              We focused on building one connected system: sharper positioning, repeatable creative
-              formats, and clear calls to action across every piece of content.
-            </p>
           </div>
         </div>
       </section>
 
-      <section className="case-study-breakdown">
-        <div className="case-study-breakdown-inner">
-          <div className="case-study-breakdown-copy">
-            <p className="case-study-section-label">What we changed</p>
-            <h2 className="case-study-section-title">
+      {/* Challenge Section */}
+      <section className="cs-section cs-challenge-sec">
+        <div className="cs-container">
+          <div className="cs-grid cs-grid-2">
+            <div className="reveal-on-scroll">
+              <span className="cs-section-label">The challenge</span>
+              <h2 className="cs-section-title">
+                Their team had expertise, but the market could not see it.
+              </h2>
+            </div>
+            <div className="cs-story-copy reveal-on-scroll">
+              <p>
+                Before the engagement, TechFlow had inconsistent posting, no clear narrative, and
+                very little content that supported demos or sales conversations. Traffic was weak,
+                brand recall was lower than competitors, and outreach felt colder than it should.
+              </p>
+              <p>
+                We focused on building one connected system: sharper positioning, repeatable creative
+                formats, and clear calls to action across every piece of content.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Breakdown Section */}
+      <section className="cs-section cs-breakdown-sec">
+        <div className="cs-container">
+          <div className="cs-breakdown-header reveal-on-scroll">
+            <span className="cs-section-label">What we changed</span>
+            <h2 className="cs-section-title">
               Strategy, production, and conversion were all treated as one funnel.
             </h2>
-            <p className="case-study-summary case-study-summary-tight">
+            <p className="cs-summary-tight">
               Instead of chasing isolated views, we designed content to create familiarity first,
               trust second, and action third.
             </p>
           </div>
 
-          <div className="case-study-phase-list">
+          <div className="cs-phases-grid">
             {phases.map((phase, index) => (
-              <article className="case-study-phase-card" key={phase.title}>
-                <span className="case-study-phase-number">0{index + 1}</span>
-                <div>
+              <div className="cs-phase-card reveal-on-scroll" key={phase.title}>
+                <div className="cs-phase-content">
                   <h3>{phase.title}</h3>
                   <p>{phase.text}</p>
                 </div>
-              </article>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="case-study-results">
-        <div className="case-study-results-inner">
-          <div className="case-study-results-quote">
-            <p className="case-study-section-label">Outcome</p>
-            <blockquote>
-              The content stopped feeling like marketing homework and started working like a sales
-              asset.
-            </blockquote>
-            <p className="case-study-quote-credit">Head of Growth, TechFlow</p>
-          </div>
+      {/* Results Section */}
+      <section className="cs-section cs-results-sec">
+        <div className="cs-container">
+          <div className="cs-results-wrapper reveal-on-scroll">
+            <div className="cs-quote-box">
+              <span className="cs-section-label">Outcome</span>
+              <blockquote className="cs-quote">
+                "The content stopped feeling like marketing homework and started working like a sales
+                asset."
+              </blockquote>
+              <div className="cs-quote-author">
+                <span className="cs-author-line"></span>
+                <p>Head of Growth, TechFlow</p>
+              </div>
+            </div>
 
-          <div className="case-study-results-panel">
-            <p className="case-study-section-label">Delivered</p>
-            <ul className="case-study-deliverables">
-              {deliverables.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
+            <div className="cs-deliverables-panel">
+              <span className="cs-section-label">Delivered</span>
+              <ul className="cs-deliverables-list">
+                {deliverables.map((item, idx) => (
+                  <li key={item} style={{'--delay': `${idx * 0.05}s`}}>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="case-study-cta">
-        <div className="case-study-cta-inner">
-          <div>
-            <p className="case-study-section-label">Next move</p>
-            <h2 className="case-study-cta-title">
+      {/* CTA Section */}
+      <section className="cs-cta-sec reveal-on-scroll">
+        <div className="cs-cta-glow"></div>
+        <div className="cs-container">
+          <div className="cs-cta-content">
+            <span className="cs-section-label">Next move</span>
+            <h2 className="cs-cta-title">
               Want this kind of clarity and consistency for your brand too?
             </h2>
-          </div>
-          <div className="case-study-cta-actions">
-            <Link to="/services" className="btn-primary-blue">See How We Work</Link>
-            <Link to="/" className="case-study-text-link">View Homepage</Link>
+            <div className="cs-cta-actions">
+              <Link to="/services" className="cs-btn-primary">
+                <span>See How We Work</span>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M4.16663 10H15.8333" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M10.8333 5L15.8333 10L10.8333 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </Link>
+              <Link to="/" className="cs-link-back">View Homepage</Link>
+            </div>
           </div>
         </div>
       </section>
     </main>
   );
 }
+
