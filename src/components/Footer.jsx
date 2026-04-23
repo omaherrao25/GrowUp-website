@@ -62,12 +62,7 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* ── Bottom bar ── */}
         <div className="footer-bottom">
-          <div className="footer-status">
-            <span className="footer-status-dot" />
-            <span>Accepting new clients</span>
-          </div>
           <span className="footer-copy">&copy; {year}. All rights reserved.</span>
         </div>
 
