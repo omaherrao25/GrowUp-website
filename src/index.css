@@ -3382,3 +3382,30 @@ body {
  .footer-main { flex-direction: column !important; gap: 3rem !important; }
  .footer-navs { justify-content: flex-start !important; gap: 2rem !important; }
 }
+
+/* ---------------------------------------------
+   ULTIMATE MOBILE & TABLET OPTIMIZATIONS
+--------------------------------------------- */
+@media (max-width: 1024px) {
+  .sw-card { width: 200px !important; height: 350px !important; }
+  .work-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 1.5rem !important; }
+  .test-grid { grid-template-columns: repeat(2, 1fr) !important; }
+}
+
+@media (max-width: 768px) {
+  section { padding: 4rem 5% !important; }
+  .gu-nav-inner { padding: 0.6rem 1.15rem !important; }
+  .sw-card { width: 155px !important; height: 275px !important; }
+  .selected-works { min-height: 110vh !important; }
+  .problem-title { font-size: 2.1rem !important; line-height: 1.2 !important; }
+  .prob-type-line { font-size: 0.95rem !important; }
+  .work-grid { grid-template-columns: 1fr !important; }
+  .work-title { font-size: 2.8rem !important; }
+  .work-eyebrow { font-size: 0.75rem !important; }
+  .test-grid { grid-template-columns: 1fr !important; gap: 1.25rem !important; }
+  .test-header { flex-direction: column !important; align-items: flex-start !important; gap: 1.5rem !important; margin-bottom: 3rem !important; }
+  .cf-right { display: none !important; }
+  .cf-left { flex: 1 1 100% !important; padding: 2.5rem 1rem !important; }
+  .cf-title { font-size: 2.2rem !important; }
+  .footer-bottom { flex-direction: column !important; gap: 1rem !important; text-align: center !important; }
+}
