@@ -3297,3 +3297,13 @@ body {
     column-gap: 4rem !important;
   }
 }
+
+/* Selected Works Marquee Polishes */
+.sw-logo-track {
+  animation: scroll-videos-reverse 100s linear infinite !important;
+}
+.sw-card {
+  border-radius: 15px !important;
+  overflow: hidden !important;
+  border: none !important;
+}
