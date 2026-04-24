@@ -146,7 +146,7 @@ export default function CaseStudyPage() {
               <span>Ready to scale?</span>
             </div>
             <h2 className="cs-cta-title">Let's write your success story.</h2>
-            <Link to="/contact" className="cs-cta-btn group">
+            <Link to="/#contact" className="cs-cta-btn group">
               Start the Conversation
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="cs-cta-icon">
                 <path d="M7 17L17 7M17 7H7M17 7V17"/>

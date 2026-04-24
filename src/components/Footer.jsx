@@ -7,65 +7,66 @@ export default function Footer() {
   return (
     <footer className="site-footer">
       <div className="footer-inner">
-
-        {/* ── Main row ── */}
         <div className="footer-main">
-
-          {/* Brand block */}
           <div className="footer-brand">
-            <Link to="/" className="footer-brand-name">
-              Grow<span>Up.</span>
+            <Link to="/#hero" className="footer-brand-home" aria-label="Grow Up home">
+              <img
+                src="/logo/g-logo.png"
+                alt="Grow Up logo"
+                className="footer-brand-logo"
+                onError={(event) => {
+                  event.currentTarget.style.display = 'none';
+                }}
+              />
             </Link>
-            <p className="footer-brand-desc">
-              Content-first growth studio.<br />
-              Turning attention into revenue.
-            </p>
-            <div className="footer-socials">
-              <a href="#" target="_blank" rel="noopener noreferrer" className="footer-social-btn" aria-label="LinkedIn">in</a>
-              <a href="#" target="_blank" rel="noopener noreferrer" className="footer-social-btn" aria-label="Instagram">ig</a>
-              <a href="#" target="_blank" rel="noopener noreferrer" className="footer-social-btn" aria-label="YouTube">yt</a>
-            </div>
+            <Link to="/#hero" className="footer-brand-name">
+              Grow Up
+            </Link>
+            <a
+              href="mailto:Management.growupmedia@gmail.com"
+              className="footer-brand-email"
+            >
+              Management.growupmedia@gmail.com
+            </a>
           </div>
 
-          {/* Nav columns */}
           <div className="footer-navs">
-
-            <nav className="footer-nav-col">
-              <p className="footer-nav-head">Get Started</p>
+            <nav className="footer-nav-col" aria-label="Home sections">
+              <p className="footer-nav-head">Sections</p>
               <ul>
-                <li><Link to="/services">Services</Link></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><Link to="/#services">Services</Link></li>
+                <li><Link to="/#selected-works">Selected Works</Link></li>
+                <li><Link to="/#work">Our Work</Link></li>
+                <li><Link to="/#testimonials">Testimonials</Link></li>
+              </ul>
+            </nav>
+
+            <nav className="footer-nav-col" aria-label="More pages">
+              <p className="footer-nav-head">Explore</p>
+              <ul>
                 <li><Link to="/why-content">Why Content</Link></li>
+                <li><Link to="/case-study">Case Study</Link></li>
+                <li><Link to="/#problem">The Problem</Link></li>
               </ul>
             </nav>
 
-            <nav className="footer-nav-col">
-              <p className="footer-nav-head">Our Work</p>
+            <nav className="footer-nav-col" aria-label="Contact links">
+              <p className="footer-nav-head">Contact</p>
               <ul>
+                <li><Link to="/#contact">Book a Call</Link></li>
                 <li>
-                  <Link to="/case-study">
-                    Case Studies
-                  </Link>
+                  <a href="mailto:Management.growupmedia@gmail.com">
+                    Email Us
+                  </a>
                 </li>
-                <li><Link to="/case-study">Portfolio</Link></li>
               </ul>
             </nav>
-
-            <nav className="footer-nav-col">
-              <p className="footer-nav-head">Privacy &amp; Policy</p>
-              <ul>
-                <li><Link to="/privacy">Privacy Policy</Link></li>
-                <li><Link to="/terms">Terms of Service</Link></li>
-              </ul>
-            </nav>
-
           </div>
         </div>
 
         <div className="footer-bottom">
-          <span className="footer-copy">&copy; {year}. All rights reserved.</span>
+          <span className="footer-copy">&copy; {year} Grow Up. All rights reserved.</span>
         </div>
-
       </div>
     </footer>
   );

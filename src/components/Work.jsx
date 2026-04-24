@@ -34,7 +34,7 @@ export default function Work() {
   ];
 
   return (
-    <section className="work-section">
+    <section className="work-section" id="work">
       <div className="work-inner">
         <div className="work-header">
           <h2 className="work-title" data-parallax="0.07">THE WORK</h2>

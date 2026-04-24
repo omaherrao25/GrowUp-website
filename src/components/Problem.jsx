@@ -9,7 +9,7 @@ const statements = [
 
 export default function Problem() {
   return (
-    <section className="problem-section">
+    <section className="problem-section" id="problem">
       <div className="problem-inner">
 
         {/* LEFT: Editorial headline */}

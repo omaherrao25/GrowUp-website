@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Creative() {
   return (
@@ -8,7 +9,7 @@ export default function Creative() {
         <p className="section-eyebrow reveal">Our Edge</p>
         <h2 className="creative-title reveal">Creative Excellence</h2>
         <p className="creative-sub reveal">Fazinflo Combines creativity with systems to deliver<br />top-tier content at scale with any overheads.</p>
-        <a href="#contact" className="btn-primary-blue reveal" id="creative-cta">Get started today</a>
+        <Link to="/#contact" className="btn-primary-blue reveal" id="creative-cta">Get started today</Link>
       </div>
     </section>
   );

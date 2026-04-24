@@ -9,19 +9,41 @@ import WhyContentPage from './pages/WhyContentPage';
 import CaseStudyPage from './pages/CaseStudyPage';
 import { useParallax } from './hooks/useParallax';
 
-function ScrollToTop() {
-  const { pathname } = useLocation();
+function ScrollManager() {
+  const { pathname, hash } = useLocation();
+
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'instant' });
-  }, [pathname]);
+    if (!hash) {
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+      return;
+    }
+
+    const targetId = decodeURIComponent(hash.slice(1));
+    const timer = window.setTimeout(() => {
+      const target = document.getElementById(targetId);
+      if (!target) return;
+
+      const navOffset = 110;
+      const targetTop = target.getBoundingClientRect().top + window.scrollY - navOffset;
+
+      window.scrollTo({
+        top: Math.max(targetTop, 0),
+        behavior: 'smooth',
+      });
+    }, 0);
+
+    return () => window.clearTimeout(timer);
+  }, [pathname, hash]);
+
   return null;
 }
 
 function App() {
   useParallax();
+
   return (
     <Router>
-      <ScrollToTop />
+      <ScrollManager />
       <Nav />
       <Routes>
         <Route path="/" element={<Home />} />

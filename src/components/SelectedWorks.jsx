@@ -52,7 +52,7 @@ export default function SelectedWorks() {
   ];
 
   return (
-    <section className="selected-works" ref={sectionRef}>
+    <section className="selected-works" id="selected-works" ref={sectionRef}>
       <motion.div
         className="sw-video-marquee-container video-section"
         data-parallax="0.08"
