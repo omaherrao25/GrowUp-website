@@ -34,7 +34,7 @@ export default function Problem() {
               <p
                 key={i}
                 className="prob-type-line"
-                style={{ '--opacity': 0.06 + i * 0.3 }}
+                style={{ '--opacity': 1 - i * 0.28 }}
               >
                 {s}
               </p>

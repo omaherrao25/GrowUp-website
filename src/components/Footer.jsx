@@ -2,91 +2,68 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
+  const year = new Date().getFullYear();
 
   return (
-    <footer className="gu-footer">
-      <div className="footer-wrap">
+    <footer className="site-footer">
+      <div className="footer-inner">
 
-        {/* ── CTA Band ── */}
-        <div className="footer-cta">
-          <h2 className="footer-cta-headline">
-            Let's build something<br />
-            <em className="footer-cta-em">remarkable.</em>
-          </h2>
-          <a href="#contact" className="footer-cta-btn">
-            <span>Book a Strategy Call</span>
-            <span className="footer-cta-arrow">↗</span>
-          </a>
-          <p className="gu-footer-copy">Management.growupmedia@gmail.com</p>
-          <p className="gu-footer-copy" style={{marginTop: '2rem'}}>© 2026 Grow Up. All content we make? Yours.</p>
-        </div>
+        {/* ── Main row ── */}
+        <div className="footer-main">
 
-        {/* ── Separator ── */}
-        <div className="footer-sep" />
-
-        {/* ── Main grid ── */}
-        <div className="footer-grid">
-
-          {/* Brand col */}
+          {/* Brand block */}
           <div className="footer-brand">
-            <Link to="/" className="footer-logo">
-              <img src="/logo/g-logo.png" alt="Grow Up" className="footer-logo-img" />
-              <span className="footer-logo-wordmark">GROW UP</span>
+            <Link to="/" className="footer-brand-name">
+              Grow<span>Up.</span>
             </Link>
-            <p className="footer-tagline">
+            <p className="footer-brand-desc">
               Content-first growth studio.<br />
               Turning attention into revenue.
             </p>
+            <div className="footer-socials">
+              <a href="#" target="_blank" rel="noopener noreferrer" className="footer-social-btn" aria-label="LinkedIn">in</a>
+              <a href="#" target="_blank" rel="noopener noreferrer" className="footer-social-btn" aria-label="Instagram">ig</a>
+              <a href="#" target="_blank" rel="noopener noreferrer" className="footer-social-btn" aria-label="YouTube">yt</a>
+            </div>
           </div>
 
-          {/* Explore col */}
-          <div className="footer-col">
-            <p className="footer-col-label">Explore</p>
-            <ul className="footer-nav-list">
-              <li><Link to="/services">Services</Link></li>
-              <li><Link to="/case-study">Work</Link></li>
-              <li><Link to="/why-content">Why Content</Link></li>
-              <li><a href="#contact">Contact</a></li>
-            </ul>
-          </div>
+          {/* Nav columns */}
+          <div className="footer-navs">
 
-          {/* Connect col */}
-          <div className="footer-col">
-            <p className="footer-col-label">Connect</p>
-            <ul className="footer-nav-list footer-nav-list--external">
-              <li>
-                <a href="#" target="_blank" rel="noopener noreferrer">
-                  <span>LinkedIn</span>
-                  <span className="ext-arrow">↗</span>
-                </a>
-              </li>
-              <li>
-                <a href="#" target="_blank" rel="noopener noreferrer">
-                  <span>Instagram</span>
-                  <span className="ext-arrow">↗</span>
-                </a>
-              </li>
-              <li>
-                <a href="#" target="_blank" rel="noopener noreferrer">
-                  <span>YouTube</span>
-                  <span className="ext-arrow">↗</span>
-                </a>
-              </li>
-            </ul>
-          </div>
+            <nav className="footer-nav-col">
+              <p className="footer-nav-head">Get Started</p>
+              <ul>
+                <li><Link to="/services">Services</Link></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><Link to="/why-content">Why Content</Link></li>
+              </ul>
+            </nav>
 
+            <nav className="footer-nav-col">
+              <p className="footer-nav-head">Our Work</p>
+              <ul>
+                <li>
+                  <Link to="/case-study">
+                    Case Studies
+                  </Link>
+                </li>
+                <li><Link to="/case-study">Portfolio</Link></li>
+              </ul>
+            </nav>
+
+            <nav className="footer-nav-col">
+              <p className="footer-nav-head">Privacy &amp; Policy</p>
+              <ul>
+                <li><Link to="/privacy">Privacy Policy</Link></li>
+                <li><Link to="/terms">Terms of Service</Link></li>
+              </ul>
+            </nav>
+
+          </div>
         </div>
 
-        {/* ── Bottom bar ── */}
         <div className="footer-bottom">
-          <span className="footer-copy">© {currentYear} Grow Up Studio. All rights reserved.</span>
-          <div className="footer-legal">
-            <Link to="/privacy">Privacy</Link>
-            <Link to="/terms">Terms</Link>
-            <span className="footer-legal-dot">·</span>
-            <span className="footer-location">Based in India, IST</span>
-          </div>
+          <span className="footer-copy">&copy; {year}. All rights reserved.</span>
         </div>
 
       </div>

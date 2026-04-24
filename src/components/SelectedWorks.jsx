@@ -32,14 +32,23 @@ export default function SelectedWorks() {
     '/v/17.mp4',
   ];
   const logos = [
-    { src: '/logo/37.png', alt: '37' },
-    { src: '/logo/kaari.png', alt: 'Kaari' },
-    { src: '/logo/kaira.png', alt: 'Kaira' },
-    { src: '/logo/g-logo.png', alt: 'G Logo' },
-    { src: '/logo/Manifestation.png', alt: 'Manifestation' },
-    { src: '/logo/Sanmaan.png', alt: 'Sanmaan' },
-    { src: '/logo/timus-logo-black.avif', alt: 'Timus' },
-    { src: '/logo/tcs logo.jpeg', alt: 'TCS' },
+    { src: '/logo/37.png',                           alt: '37'                   },
+    { src: '/logo/Aura Bling.png',                   alt: 'Aura Bling'           },
+    { src: '/logo/Banjos Logo.png',                  alt: 'Banjos'               },
+    { src: '/logo/Cela Logo.png',                    alt: 'Cela'                 },
+    { src: '/logo/Eunora Logo by nisha Garani .png', alt: 'Eunora'               },
+    { src: '/logo/finshell logo 01.jpg',             alt: 'Finshell'             },
+    { src: '/logo/kaari.png',                        alt: 'Kaari'                },
+    { src: '/logo/kaira.png',                        alt: 'Kaira'                },
+    { src: '/logo/liqquor embassy.png',              alt: 'Liquor Embassy'       },
+    { src: '/logo/Manifestation.png',                alt: 'Manifestation'        },
+    { src: "/logo/niya's logo.jpg",                  alt: "Niya's"               },
+    { src: '/logo/Sanmaan.png',                      alt: 'Sanmaan'              },
+    { src: '/logo/Shubhaarambh events Logo.png',     alt: 'Shubhaarambh Events'  },
+    { src: '/logo/tcs logo.jpeg',                    alt: 'TCS'                  },
+    { src: '/logo/timus-logo-black.avif',            alt: 'Timus'                },
+    { src: '/logo/Usha Infotech (1).png',            alt: 'Usha Infotech'        },
+    { src: '/logo/usha infra.png',                   alt: 'Usha Infra'           },
   ];
 
   return (
@@ -56,14 +65,15 @@ export default function SelectedWorks() {
         {/* Horizontal infinite logo marquee */}
         <div className="sw-logo-marquee" aria-label="Client logos">
           <div className="sw-logo-track">
-            {[...logos, ...logos, ...logos, ...logos, ...logos, ...logos, ...logos, ...logos].map((logo, i) => (
-              <img
-                key={i}
-                src={encodeURI(logo.src)}
-                alt={logo.alt}
-                className="sw-logo-image"
-                loading="lazy"
-              />
+            {[...logos, ...logos, ...logos, ...logos].map((logo, i) => (
+              <div key={i} className="sw-logo-pill">
+                <img
+                  src={encodeURI(logo.src)}
+                  alt={logo.alt}
+                  className="sw-logo-image"
+                  loading="lazy"
+                />
+              </div>
             ))}
           </div>
         </div>

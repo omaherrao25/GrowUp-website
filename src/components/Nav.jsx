@@ -15,7 +15,12 @@ export default function Nav() {
     <nav className={`gu-nav${scrolled ? ' scrolled' : ''}`}>
       <div className="gu-nav-inner">
         <Link to="/" className="gu-logo" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-          <img src="/logo/g-logo.png" alt="Grow Up Logo" style={{ height: '48px', objectFit: 'contain' }} />
+          <img
+            src="/logo/g-logo.png"
+            alt="GrowwUp Logo"
+            style={{ height: '48px', objectFit: 'contain' }}
+            onError={e => { e.currentTarget.style.display = 'none'; }}
+          />
           <span>GROW UP</span>
         </Link>
         <ul className="gu-nav-links">
