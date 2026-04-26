@@ -48,7 +48,8 @@ export default function Services() {
         "SEO-ready architecture",
         "Performance & speed",
       ],
-      video: "/video-4.mp4",
+      video: "/video-5.mp4",
+      videoPos: "center center",
     },
   ];
 
@@ -72,6 +73,7 @@ export default function Services() {
                     muted
                     playsInline
                     className="svc-thumb-video"
+                    style={svc.videoPos ? { objectPosition: svc.videoPos } : undefined}
                   />
                 </div>
                 <h3 className="svc-title">{svc.title}</h3>
