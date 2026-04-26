@@ -2011,10 +2011,16 @@ body {
   gap: 2rem;
 }
 .work-card { display: flex; flex-direction: column; }
-.work-card-link {
+
+/* Text area below video — acts as the navigation link */
+.work-card-text-link {
   color: inherit;
   text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
+.work-card-text-link:hover .work-card-cta { gap: 0.9rem; }
 
 /* ── Card thumbnail with cinematic hover ── */
 .work-img-placeholder {
@@ -2028,11 +2034,11 @@ body {
   box-shadow: 0 6px 24px rgba(0,0,0,0.1);
   transition: box-shadow 0.5s var(--ease-out);
 }
-.work-card-link:hover .work-img-placeholder {
+.work-img-placeholder:hover {
   box-shadow: 0 20px 60px rgba(0,0,0,0.2);
 }
 
-/* Gradient overlay (hidden by default) */
+/* Gradient overlay */
 .work-img-placeholder::before {
   content: '';
   position: absolute;
@@ -2043,8 +2049,32 @@ body {
   z-index: 1;
   border-radius: inherit;
 }
-.work-card-link:hover .work-img-placeholder::before {
+.work-img-placeholder:hover::before {
   opacity: 1;
+}
+
+/* Play / Pause overlay button */
+.work-play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  z-index: 10;
+  width: 60px;
+  height: 60px;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(6px);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.work-play-btn.visible {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
 }
 
 .work-video {
@@ -2055,7 +2085,7 @@ body {
   object-fit: cover;
   transition: transform 0.7s var(--ease-out);
 }
-.work-card-link:hover .work-video {
+.work-img-placeholder:hover .work-video {
   transform: scale(1.06);
 }
 
@@ -2094,7 +2124,7 @@ body {
   gap: 0.5rem;
   transition: gap 0.3s var(--ease-out);
 }
-.work-card-link:hover .work-card-cta { gap: 0.9rem; }
+
 
 @keyframes arrow-slide {
   0%, 100% { transform: translateX(0); }
