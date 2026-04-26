@@ -38,8 +38,7 @@ export default function Hero() {
         {/* Description */}
         <div className="gu-hero-sub-wrap">
           <p className="gu-hero-sub">
-            We help ambitious brands scale through strategic content systems.<br />
-            Stop guessing, start growing with a team that actually delivers.
+            We help ambitious brands scale through strategic content systems. Stop guessing, start growing with a team that actually delivers.
           </p>
         </div>
 

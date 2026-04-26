@@ -3464,3 +3464,292 @@ body {
   .legal-hero { padding: 2.5rem 0 2rem; }
   .legal-footer-nav { flex-direction: column; gap: 1rem; align-items: flex-start; }
 }
+
+/* ═════════════════════════════════════════════
+   MOBILE OPTIMISATION — comprehensive overrides
+   Breakpoints: 1024 | 768 | 480 | 380
+   ═════════════════════════════════════════════ */
+
+/* ─── NAV: hamburger + mobile menu ─── */
+.gu-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-self: end;
+}
+
+.gu-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 8px;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+.gu-hamburger:hover { background: rgba(0,0,0,0.06); }
+.gu-hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: #000;
+  border-radius: 2px;
+  transition: transform 0.35s cubic-bezier(0.16,1,0.3,1),
+              opacity 0.25s ease,
+              width 0.3s ease;
+  transform-origin: center;
+}
+.gu-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.gu-hamburger.open span:nth-child(2) { opacity: 0; width: 0; }
+.gu-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Mobile slide-down menu */
+.gu-mobile-menu {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #fff;
+  z-index: 998;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
+  overflow-y: auto;
+  padding: 6rem 2rem 3rem;
+}
+.gu-mobile-menu.open { transform: translateX(0); }
+
+.gu-mobile-links {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  width: 100%;
+}
+.gu-mobile-links li {
+  width: 100%;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+.gu-mobile-links li:first-child {
+  border-top: 1px solid rgba(0,0,0,0.06);
+}
+.gu-mobile-links a {
+  display: block;
+  padding: 1.1rem 1rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #0a0a0a;
+  text-decoration: none;
+  text-align: center;
+  transition: color 0.2s;
+}
+.gu-mobile-links a:hover,
+.gu-mobile-links a.active { color: #0096FF; }
+
+.gu-mobile-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2.5rem;
+  background: #000;
+  color: #fff;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  margin-top: 0.5rem;
+  transition: background 0.2s;
+}
+.gu-mobile-cta:hover { background: #0096FF; }
+
+/* ─── TABLET: 1024px ─── */
+@media (max-width: 1024px) {
+  /* Work grid: 2 columns */
+  .work-grid { grid-template-columns: repeat(2, 1fr); }
+
+  /* Testimonials: 2 columns */
+  .test-grid { grid-template-columns: repeat(2, 1fr); }
+
+  /* CTA/FAQ inner: single column */
+  .cta-faq-inner { grid-template-columns: 1fr; }
+
+  /* Value section: tighten padding */
+  .value-section { padding: 5rem 2rem; }
+
+  /* Contact section */
+  .contact-section { padding: 5rem 2rem; }
+
+  /* Global section */
+  .global-section { padding: 5rem 2rem; }
+}
+
+/* ─── MOBILE: 768px ─── */
+@media (max-width: 768px) {
+  /* -- Nav -- */
+  .gu-nav-links { display: none; }
+  .gu-btn-nav { display: none; }
+  .gu-hamburger { display: flex; }
+  .gu-mobile-menu { display: flex; }
+
+  .gu-nav-inner {
+    grid-template-columns: 1fr auto;
+    justify-items: start;
+    gap: 0;
+  }
+  .gu-logo { justify-self: start; }
+  .gu-nav-right { justify-self: end; }
+
+  /* -- Section spacing -- */
+  :root {
+    --section-v: 4rem;
+    --section-v-sm: 3rem;
+  }
+
+  .value-section   { padding: 4rem 1.25rem; }
+  .contact-section { padding: 4rem 1.25rem; }
+  .global-section  { padding: 4rem 1.25rem; }
+  .creative-section { padding: 5rem 1.25rem; }
+  .work-section    { padding: 4rem 1.25rem; }
+  .test-section    { padding: 4rem 1.25rem; }
+  .cta-faq-section { padding: 0 1.25rem 4rem; }
+  .services-section { padding: 4rem 1.25rem 5rem; }
+  .problem-section  { padding: 4rem 5%; }
+
+  /* -- Hero -- */
+  .gu-hero { padding: 0 5%; }
+  .gu-hero-sub { font-size: 0.95rem; max-width: 100%; }
+  .gu-hero-inner { gap: 1.75rem; }
+
+  /* -- Work grid: 1 column -- */
+  .work-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+  .work-header { flex-direction: column; gap: 0.75rem; align-items: flex-start; }
+
+  /* -- Testimonials: 1 column -- */
+  .test-grid { grid-template-columns: 1fr; gap: 1rem; }
+  .test-header { flex-direction: column; gap: 0.5rem; align-items: flex-start; }
+
+  /* -- Services: always reveal expand area on touch devices -- */
+  .svc-expand {
+    max-height: none !important;
+    opacity: 1 !important;
+    padding-left: 0 !important;
+    padding-top: 1rem !important;
+    overflow: visible !important;
+  }
+  .svc-item { padding: 1.75rem 0; }
+  .svc-title { font-size: 1.6rem; }
+  .svc-desc  { font-size: 0.95rem; max-width: 100%; }
+
+  /* -- Problem section -- */
+  .problem-inner { flex-direction: column; gap: 2.5rem; }
+  .problem-left  { max-width: 100%; }
+  .problem-right { justify-content: flex-start; width: 100%; }
+  .prob-type-art { max-width: 100%; padding: 2rem 0 2rem 1.5rem; }
+
+  /* -- Value features: 1 col -- */
+  .value-features { grid-template-columns: 1fr; gap: 1rem; }
+  .vf-item { padding: 1.5rem 1.25rem; }
+
+  /* -- Global map -- */
+  .global-stats { flex-direction: column; gap: 1.25rem; }
+  .gstat-divider { width: 60px; height: 1px; }
+  .world-map { padding: 1rem; }
+
+  /* -- CTA / FAQ -- */
+  .cta-faq-inner { grid-template-columns: 1fr; gap: 1.5rem; }
+  .cf-left { padding: 2.5rem 1.5rem; }
+  .cf-map-card { padding: 1.75rem 1.25rem; }
+  .cf-map-tags { flex-wrap: wrap; gap: 0.5rem; }
+
+  /* -- Contact form -- */
+  .form-row { grid-template-columns: 1fr; }
+  .contact-inner { padding: 0 0.25rem; }
+
+  /* -- Footer -- */
+  .footer-main { flex-direction: column; gap: 2rem; }
+  .footer-navs { flex-wrap: wrap; gap: 1.5rem; }
+  .footer-nav-col { min-width: 140px; flex: 1 1 140px; }
+  .footer-bottom { flex-direction: column; gap: 0.75rem; text-align: center; }
+  .footer-copy   { font-size: 0.75rem; }
+
+  /* -- Selected Works -- */
+  .sw-card { width: 160px; height: 284px; }
+  .selected-works { min-height: 110vh; }
+}
+
+/* ─── SMALL MOBILE: 480px ─── */
+@media (max-width: 480px) {
+  /* Nav logo: hide logo image, keep text */
+  .gu-nav-inner { padding: 0.6rem 1.25rem; }
+
+  /* Hero: tighten up */
+  .gu-hero-title { font-size: clamp(2.8rem, 13vw, 4.5rem); line-height: 0.95; }
+  .gu-hero-sub   { font-size: 0.88rem; }
+  .gu-hero-inner { gap: 1.25rem; padding: 0 0.25rem; }
+  .gu-btn-hero   { font-size: 0.75rem; padding: 0.85rem 1.5rem; }
+
+  /* Services */
+  .services-header { font-size: 2rem; }
+  .svc-title { font-size: 1.35rem; }
+
+  /* Work */
+  .work-title { font-size: 2.2rem; }
+
+  /* Problem */
+  .problem-title { font-size: 2rem; }
+
+  /* Value section */
+  .value-title { font-size: 1.5rem; }
+  .value-actions { flex-direction: column; align-items: stretch; }
+  .value-actions .btn-primary-blue,
+  .value-actions .btn-outline-white { text-align: center; }
+
+  /* Contact */
+  .contact-title { font-size: 1.75rem; }
+
+  /* CTA/FAQ */
+  .cf-title { font-size: 2rem; }
+  .cf-left  { padding: 2rem 1.25rem; border-radius: 20px; }
+
+  /* Footer: 2 col nav → 1 col */
+  .footer-navs  { flex-direction: column; gap: 1.25rem; }
+  .footer-nav-col { min-width: 100%; }
+
+  /* Testimonials */
+  .test-header-title { font-size: 1.75rem; }
+
+  /* Gallery cards */
+  .gallery-card { flex: 0 0 200px; }
+  .gc-thumb     { height: 340px; }
+
+  /* SW cards */
+  .sw-card { width: 130px; height: 231px; }
+}
+
+/* ─── VERY SMALL: 380px ─── */
+@media (max-width: 380px) {
+  .gu-hero-title { font-size: clamp(2.4rem, 14vw, 3rem); }
+  .gu-logo span  { font-size: 0.95rem; }
+  .gu-logo img   { height: 32px !important; }
+  .svc-title     { font-size: 1.2rem; }
+  .work-title    { font-size: 1.9rem; }
+  .cf-title      { font-size: 1.75rem; }
+}
