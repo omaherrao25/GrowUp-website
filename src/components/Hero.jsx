@@ -25,11 +25,6 @@ export default function Hero() {
       <div className="gu-hero-bg" ref={bgRef} />
       
       <div className="gu-hero-inner">
-        
-        {/* Kicker Badge */}
-        <div className="gu-hero-kicker-wrap">
-          <span className="gu-hero-kicker-badge">Content-First Studio</span>
-        </div>
 
         {/* Main headline */}
         <div className="gu-hero-headline-wrap">
@@ -54,7 +49,6 @@ export default function Hero() {
             <span className="btn-text">Get Started Today</span>
             <span className="btn-arrow">→</span>
           </a>
-          <p className="gu-hero-guarantee">Limited availability for Q2 2026</p>
         </div>
 
       </div>
