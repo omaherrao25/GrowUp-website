@@ -41,7 +41,7 @@ export default function Footer() {
               <h4 className="footer-nav-head">Our Work</h4>
               <ul>
                 <li><Link to="/case-study">Case Studies</Link></li>
-                <li><Link to="/case-study">Portfolio</Link></li>
+                <li><Link to="/portfolio">Portfolio</Link></li>
               </ul>
             </div>
             <div className="footer-nav-col">
