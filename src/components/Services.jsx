@@ -48,7 +48,8 @@ export default function Services() {
         "SEO-ready architecture",
         "Performance & speed",
       ],
-      video: "/video/growupwebsite.mp4",
+      video: "/video-5.mp4",
+      videoPos: "center center",
     },
   ];
 

@@ -29,10 +29,6 @@ export default function Hero() {
       <div className="gu-hero-bg" ref={bgRef} />
 
       <div className="gu-hero-inner">
-        {/* Kicker Badge */}
-        <div className="gu-hero-kicker-wrap" style={{ marginTop: 'calc(var(--nav-h) + 1rem)', marginBottom: '0.25rem' }}>
-          <span className="gu-hero-kicker-badge">Content-First Studio</span>
-        </div>
 
         {/* Main headline */}
         <div className="gu-hero-headline-wrap">
@@ -45,8 +41,7 @@ export default function Hero() {
         {/* Description */}
         <div className="gu-hero-sub-wrap">
           <p className="gu-hero-sub">
-            We help ambitious brands scale through strategic content systems.<br />
-            Stop guessing, start growing with a team that actually delivers.
+            We help ambitious brands scale through strategic content systems. Stop guessing, start growing with a team that actually delivers.
           </p>
         </div>
 

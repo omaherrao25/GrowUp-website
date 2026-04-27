@@ -30,9 +30,9 @@ export default function Gallery() {
 
   return (
     <section className="gallery-section" id="gallery">
-      <p className="gallery-hint reveal">Hover &amp; Scroll sideways to watch</p>
-      <div 
-        className="gallery-track" 
+      <p className="gallery-hint reveal">Scroll sideways to explore</p>
+      <div
+        className="gallery-track"
         id="gallery-track"
         ref={trackRef}
         onMouseDown={handleMouseDown}

@@ -2,11 +2,12 @@ import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
-import ChatWidget from './components/ChatWidget';
 import Home from './pages/Home';
 import ServicesPage from './pages/ServicesPage';
 import WhyContentPage from './pages/WhyContentPage';
 import CaseStudyPage from './pages/CaseStudyPage';
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
+import TermsPage from './pages/TermsPage';
 import { useParallax } from './hooks/useParallax';
 
 function ScrollManager() {
@@ -50,6 +51,8 @@ function App() {
         <Route path="/services" element={<ServicesPage />} />
         <Route path="/why-content" element={<WhyContentPage />} />
         <Route path="/case-study" element={<CaseStudyPage />} />
+        <Route path="/privacy" element={<PrivacyPolicyPage />} />
+        <Route path="/terms" element={<TermsPage />} />
         {/* Catch-all: redirect unknown routes to home */}
         <Route path="*" element={<Home />} />
       </Routes>

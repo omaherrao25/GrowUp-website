@@ -8,6 +8,7 @@ export default function Nav() {
   const [visible, setVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [ctaLink, setCtaLink] = useState('tel:+917821092963');
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     setCtaLink(getCtaLink());
@@ -33,6 +34,15 @@ export default function Nav() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [lastScrollY]);
 
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [menuOpen]);
+
   return (
     <nav className={`gu-nav ${scrolled ? 'scrolled' : ''} ${!visible ? 'nav-hidden' : ''}`}>
       <div className="gu-nav-inner">
@@ -45,6 +55,7 @@ export default function Nav() {
           />
           <span>GROW UP</span>
         </Link>
+
         <ul className="gu-nav-links">
           <li><Link to="/#hero" className={pathname === '/' ? 'active' : ''}>HOME</Link></li>
           <li><Link to="/services" className={pathname === '/services' ? 'active' : ''}>SERVICES</Link></li>
