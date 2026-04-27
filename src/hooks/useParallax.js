@@ -16,9 +16,17 @@ export function useParallax() {
       els.forEach((el) => {
         const speed = parseFloat(el.getAttribute('data-parallax')) || 0.15;
         const dir = parseFloat(el.getAttribute('data-parallax-dir')) || 1;
+        const mode = el.getAttribute('data-parallax-mode');
         const rect = el.getBoundingClientRect();
         const centerY = rect.top + rect.height / 2 + scrollY;
         const offset = (scrollY - centerY + window.innerHeight / 2) * speed * dir;
+
+        if (mode === 'css-var') {
+          el.style.setProperty('--parallax-y', `${offset}px`);
+          el.style.willChange = 'transform';
+          return;
+        }
+
         el.style.transform = `translateY(${offset}px)`;
         el.style.willChange = 'transform';
       });

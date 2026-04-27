@@ -1,37 +1,60 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { getCtaLink } from '../utils/ctaLink';
 
 export default function Hero() {
+  const bgRef = useRef(null);
+  const [ctaLink, setCtaLink] = useState('tel:+917821092963');
+
+  useEffect(() => {
+    setCtaLink(getCtaLink());
+    const handleMouseMove = (e) => {
+      if (!bgRef.current) return;
+      const { innerWidth, innerHeight } = window;
+      // Calculate mouse position relative to center (from -1 to 1)
+      const x = (e.clientX / innerWidth - 0.5) * 2;
+      const y = (e.clientY / innerHeight - 0.5) * 2;
+
+      // Move background slightly in opposite direction
+      bgRef.current.style.transform = `translate(${x * -20}px, ${y * -20}px)`;
+    };
+
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    return () => window.removeEventListener('mousemove', handleMouseMove, { passive: true });
+  }, []);
+
   return (
     <section className="gu-hero" id="hero">
-      <div className="gu-hero-bg" data-parallax="0.3">
-        <svg viewBox="0 0 1440 600" preserveAspectRatio="none" className="gu-hero-top-shade">
-          <defs>
-            <filter id="softBlur" x="-20%" y="-20%" width="140%" height="140%">
-              <feGaussianBlur in="SourceGraphic" stdDeviation="40" />
-            </filter>
-            <radialGradient id="topGlow" cx="50%" cy="0%" r="80%" fx="50%" fy="0%">
-              <stop offset="0%" stopColor="rgba(132, 204, 22, 0.12)" />
-              <stop offset="100%" stopColor="rgba(132, 204, 22, 0)" />
-            </radialGradient>
-          </defs>
-          <rect width="1440" height="600" fill="url(#topGlow)" />
-          <path filter="url(#softBlur)" fill="rgba(132, 204, 22, 0.08)" d="M0,0 L1440,0 L1440,300 Q720,100 0,300 Z" />
-        </svg>
-      </div>
+      {/* Smooth hardware-accelerated background */}
+      <div className="gu-hero-bg" ref={bgRef} />
+
       <div className="gu-hero-inner">
-        <h1 className="gu-hero-title" data-parallax="0.12">YOU FINALLY HAVE A<br/>MARKETING TEAM.</h1>
-        <div className="gu-hero-bottom">
-          <div className="gu-hero-text-wrapper">
-            <p className="gu-hero-sub" data-parallax="0.06">
-              It took you 5 minutes to book a call.<br/>
-              We script it. We shoot it. We design it. We build it. We post it.<br/>
-              Every single month — while you run your company.
-            </p>
-            <div className="gu-hero-cta-group" data-parallax="0.04">
-              <a href="#contact" className="gu-btn-hero">BOOK A FREE CALL</a>
-              <p className="gu-hero-guarantee">No contracts. No retainers. Just results.</p>
-            </div>
-          </div>
+
+        {/* Main headline */}
+        <div className="gu-hero-headline-wrap">
+          <h1 className="gu-hero-title">
+            <span className="gu-hero-line">Grow Your Business</span>
+            <span className="gu-hero-line-em">With Us !</span>
+          </h1>
+        </div>
+
+        {/* Description */}
+        <div className="gu-hero-sub-wrap">
+          <p className="gu-hero-sub">
+            We help ambitious brands scale through strategic content systems. Stop guessing, start growing with a team that actually delivers.
+          </p>
+        </div>
+
+        {/* CTA Section */}
+        <div className="gu-hero-cta-group">
+          <a href={ctaLink} className="gu-btn-hero">
+            <span className="btn-text">GET STARTED TODAY</span>
+            <span className="btn-arrow">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </span>
+          </a>
         </div>
       </div>
     </section>

@@ -1,36 +1,48 @@
 import React from 'react';
 
+const statements = [
+  'You have a great product.',
+  'A solid team.',
+  'Real results for clients.',
+  'And no one knows you exist.',
+];
+
 export default function Problem() {
   return (
-    <section className="problem-section">
-      <div className="problem-top-glow" data-parallax="0.25" data-parallax-dir="-1"></div>
+    <section className="problem-section" id="problem">
       <div className="problem-inner">
+
+        {/* LEFT: Editorial headline */}
         <div className="problem-left">
-          <p className="problem-eyebrow">THE TRUTH ABOUT CONTENT</p>
-          <h2 className="problem-title" data-parallax="0.08">YOUR PRODUCT<br/>IS NOT YOUR<br/>BIGGEST PROBLEM.<br/><span style={{color: '#888'}}>INVISIBILITY IS.</span></h2>
+          <p className="problem-eyebrow">The real problem</p>
+          <h2 className="problem-title">
+            YOUR PRODUCT<br />
+            IS NOT YOUR<br />
+            BIGGEST PROBLEM.<br />
+            <span className="problem-title-accent">INVISIBILITY IS.</span>
+          </h2>
+          <p className="problem-body">
+            Great companies get ignored every day. Not because they're bad —
+            because no one can find them. Content without a system is just noise.
+          </p>
         </div>
+
+        {/* RIGHT: Pure typographic visual */}
         <div className="problem-right">
-          <div className="problem-visual">
-            <div className="visual-flow">
-              <div className="q-circles">
-                <div className="q-circle small">?</div>
-                <div className="q-circle small">?</div>
-                <div className="q-circle main">
-                  <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" alt="User" />
-                </div>
-                <div className="q-circle small">?</div>
-                <div className="q-circle small">?</div>
-              </div>
-              
-              <div className="flow-line"></div>
-              
-              <div className="user-node">
-                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Aneka" alt="User" />
-              </div>
-            </div>
-            <a href="#" className="gu-btn-nav" style={{marginTop: '3rem'}}>GET STARTED →</a>
+          <div className="prob-type-art">
+            {statements.map((s, i) => (
+              <p
+                key={i}
+                className="prob-type-line"
+                style={{ '--opacity': 1 - i * 0.28 }}
+              >
+                {s}
+              </p>
+            ))}
+            <div className="prob-type-accent" />
           </div>
         </div>
+
       </div>
     </section>
   );

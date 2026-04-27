@@ -1,63 +1,78 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { getCtaLink } from '../utils/ctaLink';
+
+const CLIENT_COUNTRIES = ['India', 'USA', 'UK', 'Australia', 'UAE', 'Canada'];
+
+/* Percentage positions on the world_map.jpg (Mercator projection) */
+const MARKERS = [
+  { id: 'Canada', top: '21%', left: '23%', label: 'Canada' },
+  { id: 'USA', top: '33%', left: '21%', label: 'USA' },
+  { id: 'UK', top: '24%', left: '48%', label: 'UK' },
+  { id: 'UAE', top: '39%', left: '63%', label: 'UAE' },
+  { id: 'India', top: '43%', left: '68%', label: 'India' },
+  { id: 'Australia', top: '65%', left: '81%', label: 'Australia' },
+];
 
 export default function CtaFaq() {
-  const [openIdx, setOpenIdx] = useState(null);
+  const [ctaLink, setCtaLink] = useState('tel:+917821092963');
 
-  const faqs = [
-    {
-      q: "Do I own the content?",
-      a: "Yes, 100%. All assets we produce are yours to keep forever. We provide the source files and all distribution rights upon delivery."
-    },
-    {
-      q: "Can I pause?",
-      a: "Certainly. You can pause or cancel your service at any time. We work on a month-to-month basis with zero long-term lock-in."
-    },
-    {
-      q: "How do you handle distribution?",
-      a: "We use our proprietary engine to cut, format, and schedule your content across LinkedIn, Twitter, Instagram, and TikTok automatically."
-    },
-    {
-      q: "Do you work across all four services together?",
-      a: "Yes, our most successful clients use the full 'Zero to Undeniable' stack for maximum impact, but we can also tailor plans to your specific needs."
-    },
-    {
-      q: "How do I get started?",
-      a: "Simply book a free 30-minute discovery call using the button on the left. We'll audit your current presence and show you exactly how we can help you grow."
-    }
-  ];
+  useEffect(() => {
+    setCtaLink(getCtaLink());
+  }, []);
 
   return (
     <section className="cta-faq-section" id="contact">
       <div className="cta-faq-inner">
+        {/* Left: dark CTA panel */}
         <div className="cf-left">
-          <h2 className="cf-title">YOUR MARKET<br/>IS MOVING.</h2>
+          <p className="cf-eyebrow">Ready when you are</p>
+          <h2 className="cf-title">YOUR MARKET<br />IS MOVING.</h2>
           <p className="cf-sub">
-            Every week without consistent content is ground you're giving away.<br/>
+            Every week without consistent content is ground you're giving away.
             One call. Thirty minutes. We'll show you exactly what's missing and how we fix it.
           </p>
           <div className="cf-cta-group">
-            <a href="#" className="gu-btn-hero">BOOK YOUR FREE CALL</a>
+            <a href={ctaLink} className="gu-btn-hero">
+              BOOK YOUR FREE CALL
+            </a>
             <p className="cf-guarantee">No commitment. Just clarity.</p>
           </div>
         </div>
+
+        {/* Right: world map */}
         <div className="cf-right">
-          <h3 className="cf-faq-header">COMMON QUESTIONS</h3>
-          <div className="faq-list">
-            {faqs.map((item, i) => (
-              <div 
-                className={`faq-item ${openIdx === i ? 'open' : ''}`} 
-                key={i}
-                onClick={() => setOpenIdx(openIdx === i ? null : i)}
-              >
-                <div className="faq-q-row">
-                  <span>{item.q}</span>
-                  <span className="faq-plus">{openIdx === i ? '−' : '+'}</span>
+          <div className="cf-map-card">
+            <div className="cf-map-header">
+              <p className="cf-map-eyebrow">Global reach</p>
+              <h3 className="cf-map-title">Clients across<br />6 countries</h3>
+            </div>
+
+            {/* Map image + country markers */}
+            <div className="cf-map-wrap">
+              <img
+                src="/world_map.jpg"
+                alt="World map showing client countries"
+                className="cf-map-img"
+              />
+              {MARKERS.map(({ id, top, left, label }, i) => (
+                <div
+                  key={id}
+                  className="cf-map-pin"
+                  style={{ top, left, animationDelay: `${i * 0.45}s` }}
+                  aria-label={label}
+                >
+                  <span className="cf-map-pin-ring" />
+                  <span className="cf-map-pin-dot" />
+                  <span className="cf-map-pin-label">{label}</span>
                 </div>
-                <div className="faq-a">
-                  <p>{item.a}</p>
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
+
+            <div className="cf-map-tags">
+              {CLIENT_COUNTRIES.map(c => (
+                <span className="cf-map-tag" key={c}>{c}</span>
+              ))}
+            </div>
           </div>
         </div>
       </div>
