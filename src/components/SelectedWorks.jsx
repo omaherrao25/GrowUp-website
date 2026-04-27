@@ -28,14 +28,16 @@ export default function SelectedWorks() {
   ];
 
   const logos = [
+    { src: '/logo/1.png',                                    alt: 'Client 1'             },
+    { src: '/logo/2.png',                                    alt: 'Client 2'             },
     { src: '/logo/Banjos Logo.png',                          alt: 'Banjos'               },
     { src: '/logo/finshell logo 01.png',                     alt: 'Finshell'             },
     { src: '/logo/kaari.png',                                alt: 'Kaari'                },
     { src: '/logo/kaira.png',                                alt: 'Kaira'                },
-    { src: '/logo/liqquor embassy.png',                      alt: 'Liquor Embassy'       },
     { src: '/logo/Manifestation.png',                        alt: 'Manifestation'        },
     { src: '/logo/Sanmaan.png',                              alt: 'Sanmaan'              },
     { src: '/logo/Shubhaarambh events Logo without Bg.png',  alt: 'Shubhaarambh Events'  },
+    { src: '/logo/sngt.png',                                 alt: 'SNGT'                 },
     { src: '/logo/tcs_logo-.png',                            alt: 'TCS'                  },
     { src: '/logo/timus_log.png',                            alt: 'Timus'                },
     { src: '/logo/tiny_trends_logo.png',                     alt: 'Tiny Trends'          },
