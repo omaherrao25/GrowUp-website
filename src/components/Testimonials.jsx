@@ -85,7 +85,7 @@ export default function Testimonials() {
   };
 
   return (
-    <section className="test-section">
+    <section className="test-section" id="testimonials">
       <div className="test-inner">
 
         <div className="test-header">

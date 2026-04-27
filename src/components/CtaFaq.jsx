@@ -1,22 +1,28 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { getCtaLink } from '../utils/ctaLink';
 
 const CLIENT_COUNTRIES = ['India', 'USA', 'UK', 'Australia', 'UAE', 'Canada'];
 
 /* Percentage positions on the world_map.jpg (Mercator projection) */
 const MARKERS = [
-  { id: 'Canada',    top: '21%', left: '23%', label: 'Canada'    },
-  { id: 'USA',       top: '33%', left: '21%', label: 'USA'        },
-  { id: 'UK',        top: '24%', left: '48%', label: 'UK'         },
-  { id: 'UAE',       top: '39%', left: '63%', label: 'UAE'        },
-  { id: 'India',     top: '43%', left: '68%', label: 'India'      },
-  { id: 'Australia', top: '65%', left: '81%', label: 'Australia'  },
+  { id: 'Canada', top: '21%', left: '23%', label: 'Canada' },
+  { id: 'USA', top: '33%', left: '21%', label: 'USA' },
+  { id: 'UK', top: '24%', left: '48%', label: 'UK' },
+  { id: 'UAE', top: '39%', left: '63%', label: 'UAE' },
+  { id: 'India', top: '43%', left: '68%', label: 'India' },
+  { id: 'Australia', top: '65%', left: '81%', label: 'Australia' },
 ];
 
 export default function CtaFaq() {
+  const [ctaLink, setCtaLink] = useState('tel:+917821092963');
+
+  useEffect(() => {
+    setCtaLink(getCtaLink());
+  }, []);
+
   return (
     <section className="cta-faq-section" id="contact">
       <div className="cta-faq-inner">
-
         {/* Left: dark CTA panel */}
         <div className="cf-left">
           <p className="cf-eyebrow">Ready when you are</p>
@@ -26,7 +32,9 @@ export default function CtaFaq() {
             One call. Thirty minutes. We'll show you exactly what's missing and how we fix it.
           </p>
           <div className="cf-cta-group">
-            <a href="#" className="gu-btn-hero">BOOK YOUR FREE CALL</a>
+            <a href={ctaLink} className="gu-btn-hero">
+              BOOK YOUR FREE CALL
+            </a>
             <p className="cf-guarantee">No commitment. Just clarity.</p>
           </div>
         </div>
@@ -34,7 +42,6 @@ export default function CtaFaq() {
         {/* Right: world map */}
         <div className="cf-right">
           <div className="cf-map-card">
-
             <div className="cf-map-header">
               <p className="cf-map-eyebrow">Global reach</p>
               <h3 className="cf-map-title">Clients across<br />6 countries</h3>
@@ -66,10 +73,8 @@ export default function CtaFaq() {
                 <span className="cf-map-tag" key={c}>{c}</span>
               ))}
             </div>
-
           </div>
         </div>
-
       </div>
     </section>
   );

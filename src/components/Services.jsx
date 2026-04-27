@@ -12,7 +12,7 @@ export default function Services() {
         "Community growth",
         "Platform campaigns",
       ],
-      video: "/video-1.mp4",
+      video: "/video/tl02.mp4",
     },
     {
       num: "(02)",
@@ -24,7 +24,7 @@ export default function Services() {
         "Editing, sound & delivery",
         "Short & long form",
       ],
-      video: "/video-2.mp4",
+      video: "/video/A Boring Morning but Cinematic -  Sony ZV-E10.mp4",
     },
     {
       num: "(03)",
@@ -36,7 +36,7 @@ export default function Services() {
         "Pitch decks",
         "Landing page design",
       ],
-      video: "/video-3.mp4",
+      video: "/video/Motion Design Reel.mp4",
     },
     {
       num: "(04)",
@@ -65,17 +65,18 @@ export default function Services() {
             <div className="svc-item" key={idx}>
               <div className="svc-top-row">
                 <span className="svc-num">{svc.num}</span>
-                <div className="svc-thumb">
-                  <video
-                    src={svc.video}
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="svc-thumb-video"
-                    style={svc.videoPos ? { objectPosition: svc.videoPos } : undefined}
-                  />
-                </div>
+                {svc.video && (
+                  <div className="svc-thumb">
+                    <video
+                      src={svc.video}
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      className="svc-thumb-video"
+                    />
+                  </div>
+                )}
                 <h3 className="svc-title">{svc.title}</h3>
               </div>
               <div className="svc-expand">

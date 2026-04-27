@@ -1,100 +1,74 @@
-import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useParams, Link } from 'react-router-dom';
+import { getCtaLink } from '../utils/ctaLink';
 
-const caseStudies = [
+const STUDIES = [
   {
-    id: 1,
-    client: 'FintechFlow',
-    category: 'Brand Positioning & Social Growth',
-    title: 'From generic software to category leader in 6 months.',
-    problem: 'Despite a superior product, FintechFlow was drowning in a sea of corporate sameness. Their social presence was lifeless and failed to capture the attention of their core demographic.',
-    solution: 'We pivoted their entire narrative. Instead of talking about features, we built a content engine around financial literacy and lifestyle, launching a creator-led series with bold aesthetics.',
+    id: 'techflow',
+    client: 'TechFlow',
+    category: 'SaaS / B2B',
+    title: 'Zero to 5,000 subscribers in 6 months.',
+    problem: 'Despite a solid product, TechFlow had zero organic presence. They were spending $15k/mo on LinkedIn ads with diminishing returns.',
+    solution: 'We implemented a "Founder-First" content strategy, turning their CEO into a thought leader through high-impact short-form videos and a weekly newsletter.',
     metrics: [
-      { label: 'Follower Growth', value: '450K+' },
-      { label: 'Engagement Rate', value: '8.4%' },
-      { label: 'CAC Reduction', value: '-42%' },
+      { label: 'Subscribers', value: '5,000+' },
+      { label: 'Ad Spend', value: '-40%' },
+      { label: 'Pipeline', value: '$850k' }
     ],
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=2000',
-    layout: 'left',
+    video: '/video/Rv01.mp4'
   },
   {
-    id: 2,
-    client: 'Aura Skincare',
-    category: 'E-commerce & Performance Creative',
-    title: 'Scaling D2C revenue with authentic creator-driven creative.',
-    problem: 'Aura was struggling with rising ad costs and creative fatigue. Their highly polished studio ads were being ignored by an audience craving authenticity.',
-    solution: 'We deployed a high-volume UGC strategy combined with dynamic performance testing. We sourced 50+ micro-creators to produce raw, native-feeling content that seamlessly blended into the feed.',
+    id: 'fashionfwd',
+    client: 'FashionFwd',
+    category: 'E-commerce',
+    title: '3X Engagement with high-velocity content.',
+    problem: 'FashionFwd was struggling with low conversion rates on Instagram. Their content felt "too corporate" and wasn\'t resonating with Gen Z.',
+    solution: 'We shifted to raw, community-driven content. We built a network of 50+ micro-influencers and produced 300+ assets in 90 days.',
     metrics: [
-      { label: 'ROAS', value: '4.2x' },
-      { label: 'Revenue Generated', value: '$2.1M' },
-      { label: 'Creative Testing', value: '120+' },
+      { label: 'Engagement', value: '310%' },
+      { label: 'ROAS', value: '4.5x' },
+      { label: 'Revenue', value: '+120%' }
     ],
-    image: 'https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&q=80&w=2000',
-    layout: 'right',
+    video: '/video/dt01.mp4'
   }
 ];
 
 export default function CaseStudyPage() {
+  const { id } = useParams();
+  const [ctaLink, setCtaLink] = useState('tel:+917821092963');
+
   useEffect(() => {
-    // Scroll reveal logic
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('reveal-active');
-        }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -100px 0px' });
-
-    document.querySelectorAll('.premium-reveal').forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
+    setCtaLink(getCtaLink());
   }, []);
-
+  
   return (
     <main className="premium-cs-page">
       <div className="premium-cs-container">
-        
-        {/* Header */}
         <header className="premium-cs-header">
-          <div className="premium-reveal" style={{ transitionDelay: '0s' }}>
-            <span className="premium-cs-kicker">Selected Works</span>
-          </div>
-          <div className="premium-reveal" style={{ transitionDelay: '0.1s' }}>
-            <h1 className="premium-cs-title">
-              We don't just chase metrics.<br />
-              <span className="premium-cs-title-sub">We engineer growth.</span>
-            </h1>
+          <div className="premium-reveal">
+            <h1 className="cs-header-title">Impact over impressions.</h1>
+            <p className="cs-header-sub">How we help ambitious brands dominate their category through content systems.</p>
           </div>
         </header>
 
-        {/* Case Studies List */}
         <div className="premium-cs-list">
-          {caseStudies.map((study) => (
-            <article key={study.id} className={`premium-cs-card layout-${study.layout}`}>
-              
-              {/* Media Section */}
-              <div className="premium-cs-media-wrap">
-                <div className="premium-reveal media-reveal-wrap" style={{ transitionDelay: '0.2s' }}>
-                  <div className="premium-cs-media-inner">
-                    <img src={study.image} alt={study.client} className="premium-cs-img" />
-                    
-                    {/* Hover Reveal Metric */}
-                    <div className="premium-cs-hover-metric">
-                      <div className="premium-cs-hover-metric-inner">
-                        <div className="metric-text-wrap">
-                          <span className="metric-label">Key Result</span>
-                          <span className="metric-val">{study.metrics[0].value}</span>
-                        </div>
-                        <div className="metric-icon">
-                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                          </svg>
-                        </div>
-                      </div>
-                    </div>
+          {STUDIES.map((study, idx) => (
+            <article className="premium-cs-item" key={study.id}>
+              {/* Video/Visual Section */}
+              <div className="premium-cs-visual">
+                <div className="premium-reveal">
+                  <div className="cs-video-wrap">
+                    <video 
+                      src={study.video} 
+                      autoPlay 
+                      loop 
+                      muted 
+                      playsInline 
+                      className="cs-main-video"
+                    />
+                    <div className="cs-video-overlay" />
                   </div>
                 </div>
-                {/* Decorative Blob */}
-                <div className={`premium-cs-blob blob-${study.layout}`}></div>
               </div>
 
               {/* Content Section */}
@@ -146,17 +120,18 @@ export default function CaseStudyPage() {
               <span>Ready to scale?</span>
             </div>
             <h2 className="cs-cta-title">Let's write your success story.</h2>
-            <Link to="/contact" className="cs-cta-btn group">
-              Start the Conversation
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="cs-cta-icon">
-                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+            <a href={ctaLink} className="cs-cta-btn group">
+              START THE CONVERSATION
+              <svg 
+                width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
+                className="group-hover:translate-x-1 transition-transform"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7"/>
               </svg>
-            </Link>
+            </a>
           </div>
         </div>
-
       </div>
     </main>
   );
 }
-

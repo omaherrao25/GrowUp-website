@@ -7,6 +7,7 @@ export default function SelectedWorks() {
     target: sectionRef,
     offset: ['start end', 'end start'],
   });
+
   const takeoverY = useTransform(
     scrollYProgress,
     [0, 0.35, 0.72, 1],
@@ -14,45 +15,39 @@ export default function SelectedWorks() {
   );
 
   const videos = [
-    '/v/1.mp4',
-    '/v/2.mp4',
-    '/v/3.mp4',
-    '/v/4.mp4',
-    '/v/5.mp4',
-    '/v/6.mp4',
-    '/v/7.mp4',
-    '/v/8.mp4',
-    '/v/10.mp4',
-    '/v/11.mp4',
-    '/v/12.mp4',
-    '/v/13.mp4',
-    '/v/14.mp4',
-    '/v/15.mp4',
-    '/v/16.mp4',
-    '/v/17.mp4',
+    '/video/Rv01.mp4',
+    '/video/dt01.mp4',
+    '/video/en02.mp4',
+    '/video/gr3.mp4',
+    '/video/tc01.mp4',
+    '/video/timus01.mp4',
+    '/video/tl02.mp4',
+    '/video/uu01.mp4',
+    '/video/uu02.mp4',
+    '/video/uu03.mp4',
   ];
+
   const logos = [
-    { src: '/logo/37.png',                           alt: '37'                   },
-    { src: '/logo/Aura Bling.png',                   alt: 'Aura Bling'           },
-    { src: '/logo/Banjos Logo.png',                  alt: 'Banjos'               },
-    { src: '/logo/Cela Logo.png',                    alt: 'Cela'                 },
-    { src: '/logo/Eunora Logo by nisha Garani .png', alt: 'Eunora'               },
-    { src: '/logo/finshell logo 01.jpg',             alt: 'Finshell'             },
-    { src: '/logo/kaari.png',                        alt: 'Kaari'                },
-    { src: '/logo/kaira.png',                        alt: 'Kaira'                },
-    { src: '/logo/liqquor embassy.png',              alt: 'Liquor Embassy'       },
-    { src: '/logo/Manifestation.png',                alt: 'Manifestation'        },
-    { src: "/logo/niya's logo.jpg",                  alt: "Niya's"               },
-    { src: '/logo/Sanmaan.png',                      alt: 'Sanmaan'              },
-    { src: '/logo/Shubhaarambh events Logo.png',     alt: 'Shubhaarambh Events'  },
-    { src: '/logo/tcs logo.jpeg',                    alt: 'TCS'                  },
-    { src: '/logo/timus-logo-black.avif',            alt: 'Timus'                },
-    { src: '/logo/Usha Infotech (1).png',            alt: 'Usha Infotech'        },
-    { src: '/logo/usha infra.png',                   alt: 'Usha Infra'           },
+    { src: '/logo/1.png',                                    alt: 'Client 1'             },
+    { src: '/logo/2.png',                                    alt: 'Client 2'             },
+    { src: '/logo/Banjos Logo.png',                          alt: 'Banjos'               },
+    { src: '/logo/finshell logo 01.png',                     alt: 'Finshell'             },
+    { src: '/logo/kaari.png',                                alt: 'Kaari'                },
+    { src: '/logo/kaira.png',                                alt: 'Kaira'                },
+    { src: '/logo/Manifestation.png',                        alt: 'Manifestation'        },
+    { src: '/logo/Sanmaan.png',                              alt: 'Sanmaan'              },
+    { src: '/logo/Shubhaarambh events Logo without Bg.png',  alt: 'Shubhaarambh Events'  },
+    { src: '/logo/sngt.png',                                 alt: 'SNGT'                 },
+    { src: '/logo/tcs_logo-.png',                            alt: 'TCS'                  },
+    { src: '/logo/timus_log.png',                            alt: 'Timus'                },
+    { src: '/logo/tiny_trends_logo.png',                     alt: 'Tiny Trends'          },
+    { src: '/logo/Usha Infotech (1).png',                    alt: 'Usha Infotech'        },
+    { src: '/logo/usha infra.png',                           alt: 'Usha Infra'           },
+    { src: '/logo/VAAMSI.png',                               alt: 'VAAMSI'               },
   ];
 
   return (
-    <section className="selected-works" ref={sectionRef}>
+    <section className="selected-works" id="selected-works" ref={sectionRef}>
       <motion.div
         className="sw-video-marquee-container video-section"
         data-parallax="0.08"

@@ -1,16 +1,38 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { getCtaLink } from '../utils/ctaLink';
 
 export default function Nav() {
   const { pathname } = useLocation();
   const [scrolled, setScrolled] = useState(false);
+  const [visible, setVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const [ctaLink, setCtaLink] = useState('tel:+917821092963');
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 30);
+    setCtaLink(getCtaLink());
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      // Background styling
+      setScrolled(currentScrollY > 30);
+      
+      // Hide/Show logic
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        // Scrolling down - hide
+        setVisible(false);
+      } else {
+        // Scrolling up - show
+        setVisible(true);
+      }
+      
+      setLastScrollY(currentScrollY);
+    };
+
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [lastScrollY]);
 
   useEffect(() => {
     setMenuOpen(false);
@@ -22,50 +44,31 @@ export default function Nav() {
   }, [menuOpen]);
 
   return (
-    <nav className={`gu-nav${scrolled ? ' scrolled' : ''}`}>
+    <nav className={`gu-nav ${scrolled ? 'scrolled' : ''} ${!visible ? 'nav-hidden' : ''}`}>
       <div className="gu-nav-inner">
-        <Link to="/" className="gu-logo" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+        <Link to="/#hero" className="gu-logo" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
           <img
             src="/logo/g-logo.png"
-            alt="GrowwUp Logo"
-            style={{ height: '40px', objectFit: 'contain' }}
+            alt="Grow Up Logo"
+            style={{ height: '48px', objectFit: 'contain' }}
             onError={e => { e.currentTarget.style.display = 'none'; }}
           />
           <span>GROW UP</span>
         </Link>
 
         <ul className="gu-nav-links">
-          <li><Link to="/" className={pathname === '/' ? 'active' : ''}>HOME</Link></li>
+          <li><Link to="/#hero" className={pathname === '/' ? 'active' : ''}>HOME</Link></li>
           <li><Link to="/services" className={pathname === '/services' ? 'active' : ''}>SERVICES</Link></li>
           <li><Link to="/case-study" className={pathname === '/case-study' ? 'active' : ''}>CASE STUDY</Link></li>
           <li><Link to="/why-content" className={pathname === '/why-content' ? 'active' : ''}>WHY CONTENT</Link></li>
         </ul>
-
-        <div className="gu-nav-right">
-          <a href="#contact" className="gu-btn-nav">BOOK A CALL →</a>
-          <button
-            className={`gu-hamburger${menuOpen ? ' open' : ''}`}
-            onClick={() => setMenuOpen(o => !o)}
-            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
-          >
-            <span />
-            <span />
-            <span />
-          </button>
-        </div>
-      </div>
-
-      <div className={`gu-mobile-menu${menuOpen ? ' open' : ''}`} aria-hidden={!menuOpen}>
-        <ul className="gu-mobile-links">
-          <li><Link to="/" className={pathname === '/' ? 'active' : ''} onClick={() => setMenuOpen(false)}>Home</Link></li>
-          <li><Link to="/services" className={pathname === '/services' ? 'active' : ''} onClick={() => setMenuOpen(false)}>Services</Link></li>
-          <li><Link to="/case-study" className={pathname === '/case-study' ? 'active' : ''} onClick={() => setMenuOpen(false)}>Case Study</Link></li>
-          <li><Link to="/why-content" className={pathname === '/why-content' ? 'active' : ''} onClick={() => setMenuOpen(false)}>Why Content</Link></li>
-          <li><Link to="/privacy" className={pathname === '/privacy' ? 'active' : ''} onClick={() => setMenuOpen(false)}>Privacy Policy</Link></li>
-          <li><Link to="/terms" className={pathname === '/terms' ? 'active' : ''} onClick={() => setMenuOpen(false)}>Terms</Link></li>
-        </ul>
-        <a href="#contact" className="gu-mobile-cta" onClick={() => setMenuOpen(false)}>
-          Book a Free Call →
+        <a href={ctaLink} className="gu-btn-nav">
+          BOOK A CALL
+          <span className="btn-arrow">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </span>
         </a>
       </div>
     </nav>
