@@ -1,137 +1,156 @@
-import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
 import { getCtaLink } from '../utils/ctaLink';
 
 const STUDIES = [
   {
-    id: 'techflow',
-    client: 'TechFlow',
-    category: 'SaaS / B2B',
-    title: 'Zero to 5,000 subscribers in 6 months.',
-    problem: 'Despite a solid product, TechFlow had zero organic presence. They were spending $15k/mo on LinkedIn ads with diminishing returns.',
-    solution: 'We implemented a "Founder-First" content strategy, turning their CEO into a thought leader through high-impact short-form videos and a weekly newsletter.',
-    metrics: [
-      { label: 'Subscribers', value: '5,000+' },
-      { label: 'Ad Spend', value: '-40%' },
-      { label: 'Pipeline', value: '$850k' }
+    id: 'fintechflow',
+    client: 'FintechFlow',
+    category: 'SaaS · Brand Positioning',
+    title: 'From invisible startup to category authority in under six months.',
+    video: '/video/Rv01.mp4',
+    context: [
+      'Strong product with zero organic presence and no consistent brand narrative',
+      'Entirely dependent on paid acquisition with steadily rising cost per lead',
+      'No voice established on LinkedIn, YouTube, or short-form social channels',
     ],
-    video: '/video/Rv01.mp4'
+    approach: [
+      'Built a founder-led content strategy anchored in financial education',
+      'Produced a weekly short-form video series with bold, editorial aesthetics',
+      'Established a structured cross-platform publishing cadence targeting decision-makers',
+    ],
+    outcome: [
+      'Organic content became the primary driver of qualified inbound leads',
+      'Paid ad spend dependency dropped significantly within the first quarter',
+      'Brand now recognized as a category authority within its core target segment',
+    ],
   },
   {
-    id: 'fashionfwd',
-    client: 'FashionFwd',
-    category: 'E-commerce',
-    title: '3X Engagement with high-velocity content.',
-    problem: 'FashionFwd was struggling with low conversion rates on Instagram. Their content felt "too corporate" and wasn\'t resonating with Gen Z.',
-    solution: 'We shifted to raw, community-driven content. We built a network of 50+ micro-influencers and produced 300+ assets in 90 days.',
-    metrics: [
-      { label: 'Engagement', value: '310%' },
-      { label: 'ROAS', value: '4.5x' },
-      { label: 'Revenue', value: '+120%' }
+    id: 'aura',
+    client: 'Aura Skincare',
+    category: 'D2C · E-commerce',
+    title: 'Authentic creative at scale for a brand craving real connection.',
+    video: '/video/dt01.mp4',
+    context: [
+      'Rising ad costs and severe creative fatigue across all paid channels',
+      'Polished studio content failing to resonate with a younger, authenticity-first audience',
+      'Inconsistent brand voice across Instagram, TikTok, and YouTube',
     ],
-    video: '/video/dt01.mp4'
-  }
+    approach: [
+      'Deployed a high-volume UGC content engine built on a network of micro-creators',
+      'Developed raw, native-feeling creative designed to blend seamlessly into the feed',
+      'Ran systematic creative testing across a large pool of variations every month',
+    ],
+    outcome: [
+      'Paid channel performance improved substantially across all key metrics',
+      'Creative fatigue eliminated through a continuously refreshed content pipeline',
+      'Brand community grew organically alongside paid performance',
+    ],
+  },
 ];
 
 export default function CaseStudyPage() {
-  const { id } = useParams();
   const [ctaLink, setCtaLink] = useState('tel:+917821092963');
 
   useEffect(() => {
     setCtaLink(getCtaLink());
   }, []);
-  
-  return (
-    <main className="premium-cs-page">
-      <div className="premium-cs-container">
-        <header className="premium-cs-header">
-          <div className="premium-reveal">
-            <h1 className="cs-header-title">Impact over impressions.</h1>
-            <p className="cs-header-sub">How we help ambitious brands dominate their category through content systems.</p>
-          </div>
-        </header>
 
-        <div className="premium-cs-list">
-          {STUDIES.map((study, idx) => (
-            <article className="premium-cs-item" key={study.id}>
-              {/* Video/Visual Section */}
-              <div className="premium-cs-visual">
-                <div className="premium-reveal">
-                  <div className="cs-video-wrap">
-                    <video 
-                      src={study.video} 
-                      autoPlay 
-                      loop 
-                      muted 
-                      playsInline 
-                      className="cs-main-video"
-                    />
-                    <div className="cs-video-overlay" />
-                  </div>
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach(e => e.isIntersecting && e.target.classList.add('cs-visible')),
+      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+    );
+    document.querySelectorAll('.cs-reveal').forEach(el => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <main className="cs-page">
+
+      {/* Hero — dark */}
+      <section className="cs-band cs-band--dark cs-band--hero">
+        <div className="cs-container">
+          <div className="cs-hero cs-reveal">
+            <p className="cs-eyebrow">Our Work</p>
+            <h1 className="cs-hero-title">Case Studies</h1>
+            <p className="cs-hero-sub">
+              Strategies built around outcomes. Stories told through growth.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Studies — alternating light / dark */}
+      {STUDIES.map((study, idx) => (
+        <section
+          key={study.id}
+          className={`cs-band ${idx % 2 === 0 ? 'cs-band--light' : 'cs-band--dark'}`}
+        >
+          <div className="cs-container">
+            <article className={`cs-study${idx % 2 !== 0 ? ' cs-study--reverse' : ''}`}>
+
+              <div className="cs-study-visual cs-reveal">
+                <div className="cs-video-frame">
+                  <video src={study.video} autoPlay loop muted playsInline className="cs-video" />
+                  <div className="cs-video-tint" />
                 </div>
               </div>
 
-              {/* Content Section */}
-              <div className="premium-cs-content">
-                <div className="premium-reveal" style={{ transitionDelay: '0.3s' }}>
-                  <div className="premium-cs-tags">
-                    <span className="cs-tag-client">{study.client}</span>
-                    <span className="cs-tag-cat">{study.category}</span>
-                  </div>
-                </div>
-                
-                <div className="premium-reveal" style={{ transitionDelay: '0.4s' }}>
-                  <h2 className="cs-content-title">{study.title}</h2>
-                </div>
-
-                <div className="premium-reveal" style={{ transitionDelay: '0.5s' }}>
-                  <div className="cs-content-body">
-                    <p>
-                      <strong>The Problem</strong>
-                      {study.problem}
-                    </p>
-                    <p>
-                      <strong>The Strategy</strong>
-                      {study.solution}
-                    </p>
+              <div className="cs-study-content">
+                <div className="cs-reveal" style={{ transitionDelay: '0.08s' }}>
+                  <div className="cs-tags">
+                    <span className="cs-tag">{study.client}</span>
+                    <span className="cs-tag cs-tag--dim">{study.category}</span>
                   </div>
                 </div>
 
-                <div className="premium-reveal" style={{ transitionDelay: '0.6s' }}>
-                  <div className="cs-metrics-grid">
-                    {study.metrics.map((metric, i) => (
-                      <div className="cs-metric-item" key={i}>
-                        <div className="cs-metric-value">{metric.value}</div>
-                        <div className="cs-metric-label">{metric.label}</div>
-                      </div>
-                    ))}
+                <div className="cs-reveal" style={{ transitionDelay: '0.16s' }}>
+                  <h2 className="cs-study-title">{study.title}</h2>
+                </div>
+
+                <div className="cs-blocks cs-reveal" style={{ transitionDelay: '0.24s' }}>
+                  <div className="cs-block">
+                    <p className="cs-block-label">The Context</p>
+                    <ul className="cs-bullets">
+                      {study.context.map((pt, i) => <li key={i}>{pt}</li>)}
+                    </ul>
+                  </div>
+                  <div className="cs-block">
+                    <p className="cs-block-label">Our Approach</p>
+                    <ul className="cs-bullets">
+                      {study.approach.map((pt, i) => <li key={i}>{pt}</li>)}
+                    </ul>
+                  </div>
+                  <div className="cs-block">
+                    <p className="cs-block-label">The Outcome</p>
+                    <ul className="cs-bullets">
+                      {study.outcome.map((pt, i) => <li key={i}>{pt}</li>)}
+                    </ul>
                   </div>
                 </div>
               </div>
 
             </article>
-          ))}
-        </div>
+          </div>
+        </section>
+      ))}
 
-        {/* CTA */}
-        <div className="premium-cs-cta">
-          <div className="premium-reveal">
-            <div className="cs-cta-badge">
-              <span>Ready to scale?</span>
-            </div>
-            <h2 className="cs-cta-title">Let's write your success story.</h2>
-            <a href={ctaLink} className="cs-cta-btn group">
-              START THE CONVERSATION
-              <svg 
-                width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
-                className="group-hover:translate-x-1 transition-transform"
-              >
-                <path d="M5 12h14M12 5l7 7-7 7"/>
+      {/* CTA — light */}
+      <section className="cs-band cs-band--light cs-band--cta">
+        <div className="cs-container">
+          <div className="cs-cta cs-reveal">
+            <p className="cs-eyebrow">Ready?</p>
+            <h2 className="cs-cta-title">Let's build yours next.</h2>
+            <a href={ctaLink} className="cs-cta-btn">
+              Start the Conversation
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
             </a>
           </div>
         </div>
-      </div>
+      </section>
+
     </main>
   );
 }
