@@ -2077,6 +2077,63 @@ body {
   transform: translate(-50%, -50%) scale(1);
 }
 
+/* Bottom controls bar (timeline + mute) */
+.work-controls {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 20px 12px 12px;
+  background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  border-radius: 0 0 20px 20px;
+}
+.work-controls.visible {
+  opacity: 1;
+}
+
+/* Timeline / progress bar */
+.work-timeline {
+  flex: 1;
+  height: 3px;
+  background: rgba(255,255,255,0.35);
+  border-radius: 2px;
+  cursor: pointer;
+  position: relative;
+  transition: height 0.15s ease;
+}
+.work-timeline:hover {
+  height: 5px;
+}
+.work-progress {
+  height: 100%;
+  background: #fff;
+  border-radius: 2px;
+  pointer-events: none;
+}
+
+/* Mute / unmute button */
+.work-mute-btn {
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+  flex-shrink: 0;
+}
+.work-mute-btn:hover {
+  opacity: 1;
+}
+
 .work-video {
   position: absolute;
   inset: 0;
