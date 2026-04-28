@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Nav from './components/Nav';
+import DiscountBanner from './components/DiscountBanner';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import ServicesPage from './pages/ServicesPage';
@@ -46,6 +47,7 @@ function App() {
   return (
     <Router>
       <ScrollManager />
+      <DiscountBanner />
       <Nav />
       <Routes>
         <Route path="/" element={<Home />} />
