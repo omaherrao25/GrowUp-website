@@ -102,7 +102,7 @@ export default function Work() {
       name: 'GrowthOps - B2B',
       metric: '$1.2M PIPELINE',
       desc: 'End-to-end content distribution system. Repurposed 10 core webinars into 150+ micro-assets. Generated $1.2M in qualified pipeline in Q3.',
-      video: '/video/gr3.mp4',
+      video: '/video/Gr3.mp4',
       href: '/case-study',
     },
   ];
