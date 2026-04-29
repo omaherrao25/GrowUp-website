@@ -34,7 +34,7 @@ export default function Hero() {
         <div className="gu-hero-headline-wrap">
           <h1 className="gu-hero-title">
             <span className="gu-hero-line">Grow Your Business</span>
-            <span className="gu-hero-line-em">With Us !</span>
+            <span className="gu-hero-line-em">With Us</span>
           </h1>
         </div>
 

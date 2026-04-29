@@ -3,48 +3,96 @@ import { getCtaLink } from '../utils/ctaLink';
 
 const STUDIES = [
   {
-    id: 'fintechflow',
-    client: 'FintechFlow',
-    category: 'SaaS · Brand Positioning',
-    title: 'From invisible startup to category authority in under six months.',
-    video: '/video/Rv01.mp4',
+    id: 'timus',
+    client: 'TIMUS',
+    category: 'Product Brand',
+    title: 'Global luggage brand. Rebuilt their visual identity on social.',
+    video: '/video/timus01.mp4',
     context: [
-      'Strong product with zero organic presence and no consistent brand narrative',
-      'Entirely dependent on paid acquisition with steadily rising cost per lead',
-      'No voice established on LinkedIn, YouTube, or short-form social channels',
+      'A global luggage brand with strong products but no consistent social presence',
+      'No visual language or content strategy built for short-form audiences',
+      'Missing the storytelling that turns casual viewers into loyal customers',
     ],
     approach: [
-      'Built a founder-led content strategy anchored in financial education',
-      'Produced a weekly short-form video series with bold, editorial aesthetics',
-      'Established a structured cross-platform publishing cadence targeting decision-makers',
+      'Rebuilt their visual identity from the ground up for a social-first audience',
+      'Developed cinematic hooks centred around travel storytelling and lifestyle',
+      'Produced fully edited reels engineered to stop the scroll and hold attention',
     ],
     outcome: [
-      'Organic content became the primary driver of qualified inbound leads',
-      'Paid ad spend dependency dropped significantly within the first quarter',
-      'Brand now recognized as a category authority within its core target segment',
+      'Over a million views achieved per reel, consistently across every upload',
+      'Multiple reels crossed the viral threshold within the first quarter',
+      'Brand perception shifted — now recognised as a premium, global luggage name',
     ],
+    quote: 'Every reel crossed a million views. Brand perception shifted overnight.',
   },
   {
-    id: 'aura',
-    client: 'Aura Skincare',
-    category: 'D2C · E-commerce',
-    title: 'Authentic creative at scale for a brand craving real connection.',
-    video: '/video/dt01.mp4',
+    id: 'usha',
+    client: 'Usha Infotech',
+    category: 'Tech & B2B',
+    title: 'IT company turned into a recognised personal brand.',
+    video: '/video/uu01.mp4',
     context: [
-      'Rising ad costs and severe creative fatigue across all paid channels',
-      'Polished studio content failing to resonate with a younger, authenticity-first audience',
-      'Inconsistent brand voice across Instagram, TikTok, and YouTube',
+      'A solid IT company completely invisible on social with no personal brand presence',
+      'Decision-makers in their target market unaware of their services or expertise',
+      'Generic content that failed to communicate value or generate any qualified leads',
     ],
     approach: [
-      'Deployed a high-volume UGC content engine built on a network of micro-creators',
-      'Developed raw, native-feeling creative designed to blend seamlessly into the feed',
-      'Ran systematic creative testing across a large pool of variations every month',
+      'Repositioned the founder as a thought leader through pain-point-driven hooks',
+      'Created content specifically targeting B2B decision-makers on Reels and LinkedIn',
+      'Built a content engine that educated, established trust, and converted simultaneously',
     ],
     outcome: [
-      'Paid channel performance improved substantially across all key metrics',
-      'Creative fatigue eliminated through a continuously refreshed content pipeline',
-      'Brand community grew organically alongside paid performance',
+      'Reel content reached over a million people within the first few months of posting',
+      'Direct B2B conversions traced back to specific pieces of content published',
+      'Lead quality improved significantly — only high-intent inquiries coming through',
     ],
+    quote: 'We got actual business from reels. Grow Up proved us completely wrong.',
+  },
+  {
+    id: 'rahul',
+    client: 'Rahul Jain',
+    category: 'Real Estate',
+    title: 'From just another agent to a recognised local property expert.',
+    video: '/video/gr3.mp4',
+    context: [
+      'A real estate professional struggling to stand out in a trust-driven, crowded market',
+      'Entirely dependent on referrals and cold outreach with no digital presence',
+      'Buyers needed extensive trust-building before being willing to make contact',
+    ],
+    approach: [
+      'Positioned Rahul as a market-insight expert through education-first short-form content',
+      'Created hooks around genuine buyer pain points to attract pre-qualified audiences',
+      'Built a recognisable personal brand centred on trust before any sales message',
+    ],
+    outcome: [
+      'Multiple reels went viral, significantly expanding his local and regional reach',
+      'Follower growth accelerated rapidly within weeks of the first content going live',
+      'Inbound leads replaced outbound entirely — buyers now arrive pre-sold',
+    ],
+    quote: "Buyers come pre-sold. I haven't chased a lead since we started.",
+  },
+  {
+    id: 'eunora',
+    client: 'EUNORA Physiotherapy',
+    category: 'Healthcare',
+    title: 'Clinic turned into the most visible physio brand in the city.',
+    video: '/video/en02.mp4',
+    context: [
+      'A physiotherapy clinic with expert practitioners but zero online visibility',
+      'Relying entirely on word-of-mouth with no sustainable digital acquisition channel',
+      'A highly competitive local market where trust and education are the key to bookings',
+    ],
+    approach: [
+      'Built an education-first content strategy centred on patient pain points and recovery',
+      'Produced health reels that demonstrated deep expertise and built lasting audience trust',
+      'Established the clinic as the go-to local authority for physiotherapy content online',
+    ],
+    outcome: [
+      'Health content went viral consistently within the local target community',
+      'Booked appointments increased month over month driven entirely by content',
+      'Ranked as the most visible physiotherapy brand locally within their service area',
+    ],
+    quote: 'Patients walk in quoting our videos. Grow Up grew our patient base.',
   },
 ];
 
@@ -57,8 +105,8 @@ export default function CaseStudyPage() {
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      (entries) => entries.forEach(e => e.isIntersecting && e.target.classList.add('cs-visible')),
-      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+      entries => entries.forEach(e => e.isIntersecting && e.target.classList.add('cs-visible')),
+      { threshold: 0.08, rootMargin: '0px 0px -50px 0px' }
     );
     document.querySelectorAll('.cs-reveal').forEach(el => observer.observe(el));
     return () => observer.disconnect();
@@ -74,7 +122,7 @@ export default function CaseStudyPage() {
             <p className="cs-eyebrow">Our Work</p>
             <h1 className="cs-hero-title">Case Studies</h1>
             <p className="cs-hero-sub">
-              Strategies built around outcomes. Stories told through growth.
+              Real brands. Real results. Stories told through growth.
             </p>
           </div>
         </div>
@@ -104,11 +152,11 @@ export default function CaseStudyPage() {
                   </div>
                 </div>
 
-                <div className="cs-reveal" style={{ transitionDelay: '0.16s' }}>
+                <div className="cs-reveal" style={{ transitionDelay: '0.15s' }}>
                   <h2 className="cs-study-title">{study.title}</h2>
                 </div>
 
-                <div className="cs-blocks cs-reveal" style={{ transitionDelay: '0.24s' }}>
+                <div className="cs-blocks cs-reveal" style={{ transitionDelay: '0.22s' }}>
                   <div className="cs-block">
                     <p className="cs-block-label">The Context</p>
                     <ul className="cs-bullets">
@@ -128,6 +176,10 @@ export default function CaseStudyPage() {
                     </ul>
                   </div>
                 </div>
+
+                <blockquote className="cs-quote cs-reveal" style={{ transitionDelay: '0.3s' }}>
+                  "{study.quote}"
+                </blockquote>
               </div>
 
             </article>

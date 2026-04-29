@@ -24,7 +24,7 @@ export default function Services() {
         "Editing, sound & delivery",
         "Short & long form",
       ],
-      video: "https://res.cloudinary.com/datlx66d6/video/upload/q_auto/f_auto/v1777389863/A_Boring_Morning_but_Cinematic_-_Sony_ZV-E10_cacp8h.mp4",
+      video: "/video/A Boring Morning but Cinematic -  Sony ZV-E10.mp4",
     },
     {
       num: "(03)",
