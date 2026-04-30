@@ -48,7 +48,7 @@ export default function Nav() {
       <div className="gu-nav-inner">
         <Link to="/#hero" className="gu-logo" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
           <img
-            src="/logo/g-logo.png"
+            src="/favicon.png"
             alt="Grow Up Logo"
             style={{ height: '48px', objectFit: 'contain' }}
             onError={e => { e.currentTarget.style.display = 'none'; }}

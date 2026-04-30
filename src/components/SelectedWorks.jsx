@@ -1,8 +1,9 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
 export default function SelectedWorks() {
   const sectionRef = useRef(null);
+  const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ['start end', 'end start'],
@@ -14,18 +15,52 @@ export default function SelectedWorks() {
     ['8vh', '2vh', '-4vh', '-10vh']
   );
 
+  useEffect(() => {
+    const observerOptions = {
+      root: null,
+      rootMargin: '100px',
+      threshold: 0.1,
+    };
+
+    const handleIntersection = (entries) => {
+      entries.forEach((entry) => {
+        const video = entry.target;
+        const source = video.querySelector('source');
+
+        if (entry.isIntersecting) {
+          // Lazy load source
+          if (source && source.dataset.src && !video.src) {
+            video.src = source.dataset.src;
+            video.load();
+          }
+          // Play when visible
+          video.play().catch(() => {});
+        } else {
+          // Pause when not visible
+          video.pause();
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(handleIntersection, observerOptions);
+    const videoElements = containerRef.current?.querySelectorAll('.sw-video');
+    
+    videoElements?.forEach((vid) => observer.observe(vid));
+
+    return () => observer.disconnect();
+  }, []);
+
   const videos = [
-    '/video/Rv01.mp4',
-    '/video/dt01.mp4',
-    '/video/en02.mp4',
-    '/video/gr3.mp4',
-    '/video/tc01.mp4',
-    '/video/timus01.mp4',
-    '/video/tl02.mp4',
-    '/video/uu01.mp4',
-    '/video/uu02.mp4',
-    '/video/uu03.mp4',
-  ];
+  'https://res.cloudinary.com/degjo7mzp/video/upload/f_auto,q_auto,vc_auto/v1777457277/video/Rv01_pv1jcm.mp4',
+  'https://res.cloudinary.com/degjo7mzp/video/upload/f_auto,q_auto,vc_auto/v1777457258/video/dt01_pgecmt.mp4',
+  'https://res.cloudinary.com/degjo7mzp/video/upload/f_auto,q_auto,vc_auto/v1777457260/video/tl02_opltpf.mp4',
+  'https://res.cloudinary.com/degjo7mzp/video/upload/f_auto,q_auto,vc_auto/v1777457275/video/Gr3_eaqz0a.mp4',
+  'https://res.cloudinary.com/degjo7mzp/video/upload/f_auto,q_auto,vc_auto/v1777467147/Tc01_dlydtm.mp4',
+  'https://res.cloudinary.com/degjo7mzp/video/upload/f_auto,q_auto,vc_auto/v1777457266/video/timus01_dal0gv.mp4',
+  'https://res.cloudinary.com/degjo7mzp/video/upload/f_auto,q_auto,vc_auto/v1777467131/uu02_lr7vgl.mp4',
+  'https://res.cloudinary.com/degjo7mzp/video/upload/f_auto,q_auto,vc_auto/v1777457277/video/uu03_qrt9sn.mp4',
+  'https://res.cloudinary.com/degjo7mzp/video/upload/f_auto,q_auto,vc_auto/v1777457266/video/uu01_zwkvlp.mp4'
+];
 
   const logos = [
     { src: '/logo/1.png',                                    alt: 'Client 1'             },
@@ -49,6 +84,7 @@ export default function SelectedWorks() {
   return (
     <section className="selected-works" id="selected-works" ref={sectionRef}>
       <motion.div
+        ref={containerRef}
         className="sw-video-marquee-container video-section"
         data-parallax="0.08"
         data-parallax-mode="css-var"
@@ -75,7 +111,16 @@ export default function SelectedWorks() {
         <div className="sw-video-marquee-track">
           {[...videos, ...videos, ...videos, ...videos].map((vid, idx) => (
             <div className="sw-card" key={idx}>
-              <video src={vid} autoPlay loop muted playsInline className="sw-video" />
+              <video 
+                className="sw-video"
+                loop 
+                muted 
+                playsInline 
+                preload="none"
+                poster={vid.replace(/\/upload\/.*?\/(v\d+)/, '/upload/so_auto/$1').replace('.mp4', '.jpg')}
+              >
+                <source data-src={vid} type="video/mp4" />
+              </video>
               <div className="sw-video-gradient" aria-hidden="true" />
             </div>
           ))}

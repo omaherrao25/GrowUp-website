@@ -7,7 +7,7 @@ const STUDIES = [
     client: 'TIMUS',
     category: 'Product Brand',
     title: 'Global luggage brand. Rebuilt their visual identity on social.',
-    video: '/video/timus01.mp4',
+    video: 'https://res.cloudinary.com/degjo7mzp/video/upload/f_auto,q_auto,vc_auto/v1777457266/video/timus01_dal0gv.mp4',
     context: [
       'A global luggage brand with strong products but no consistent social presence',
       'No visual language or content strategy built for short-form audiences',
@@ -30,7 +30,7 @@ const STUDIES = [
     client: 'Usha Infotech',
     category: 'Tech & B2B',
     title: 'IT company turned into a recognised personal brand.',
-    video: '/video/uu01.mp4',
+    video: 'https://res.cloudinary.com/degjo7mzp/video/upload/f_auto,q_auto,vc_auto/v1777457266/video/uu01_zwkvlp.mp4',
     context: [
       'A solid IT company completely invisible on social with no personal brand presence',
       'Decision-makers in their target market unaware of their services or expertise',
@@ -53,7 +53,7 @@ const STUDIES = [
     client: 'Rahul Jain',
     category: 'Real Estate',
     title: 'From just another agent to a recognised local property expert.',
-    video: '/video/gr3.mp4',
+    video: 'https://res.cloudinary.com/degjo7mzp/video/upload/f_auto,q_auto,vc_auto/v1777457275/video/Gr3_eaqz0a.mp4',
     context: [
       'A real estate professional struggling to stand out in a trust-driven, crowded market',
       'Entirely dependent on referrals and cold outreach with no digital presence',
@@ -76,7 +76,7 @@ const STUDIES = [
     client: 'EUNORA Physiotherapy',
     category: 'Healthcare',
     title: 'Clinic turned into the most visible physio brand in the city.',
-    video: '/video/en02.mp4',
+    video: 'https://res.cloudinary.com/degjo7mzp/video/upload/f_auto,q_auto,vc_auto/v1777457256/video/en02_jbzvjq.mp4',
     context: [
       'A physiotherapy clinic with expert practitioners but zero online visibility',
       'Relying entirely on word-of-mouth with no sustainable digital acquisition channel',
@@ -104,12 +104,38 @@ export default function CaseStudyPage() {
   }, []);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
+    // Reveal animation observer
+    const revealObserver = new IntersectionObserver(
       entries => entries.forEach(e => e.isIntersecting && e.target.classList.add('cs-visible')),
       { threshold: 0.08, rootMargin: '0px 0px -50px 0px' }
     );
-    document.querySelectorAll('.cs-reveal').forEach(el => observer.observe(el));
-    return () => observer.disconnect();
+    document.querySelectorAll('.cs-reveal').forEach(el => revealObserver.observe(el));
+
+    // Video performance observer
+    const videoObserver = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          const video = entry.target;
+          const source = video.querySelector('source');
+          if (entry.isIntersecting) {
+            if (source && source.dataset.src && !video.src) {
+              video.src = source.dataset.src;
+              video.load();
+            }
+            video.play().catch(() => {});
+          } else {
+            video.pause();
+          }
+        });
+      },
+      { threshold: 0.05, rootMargin: '100px' }
+    );
+    document.querySelectorAll('.cs-video').forEach(vid => videoObserver.observe(vid));
+
+    return () => {
+      revealObserver.disconnect();
+      videoObserver.disconnect();
+    };
   }, []);
 
   return (
@@ -139,10 +165,20 @@ export default function CaseStudyPage() {
 
               <div className="cs-study-visual cs-reveal">
                 <div className="cs-video-frame">
-                  <video src={study.video} autoPlay loop muted playsInline className="cs-video" />
+                  <video 
+                    className="cs-video"
+                    loop 
+                    muted 
+                    playsInline 
+                    preload="none"
+                    poster={study.video.replace(/\/upload\/.*?\/(v\d+)/, '/upload/so_auto/$1').replace('.mp4', '.jpg')}
+                  >
+                    <source data-src={study.video} type="video/mp4" />
+                  </video>
                   <div className="cs-video-tint" />
                 </div>
               </div>
+      {/* ... previous content remains same ... */}
 
               <div className="cs-study-content">
                 <div className="cs-reveal" style={{ transitionDelay: '0.08s' }}>

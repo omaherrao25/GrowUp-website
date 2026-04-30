@@ -4,18 +4,18 @@ import { getCtaLink } from '../utils/ctaLink';
 const CATEGORIES = ['All', 'Social Media', 'Video Production', 'Design', 'Branding'];
 
 const WORKS = [
-  { id: 1,  src: '/video/Rv01.mp4',                                              category: 'Social Media',     label: 'Brand Story',     wide: true  },
-  { id: 2,  src: '/video/dt01.mp4',                                              category: 'Video Production', label: 'Product Film',    wide: false },
-  { id: 3,  src: '/video/en02.mp4',                                              category: 'Social Media',     label: 'Creator Content', wide: false },
-  { id: 4,  src: '/video/gr3.mp4',                                               category: 'Social Media',     label: 'Short-Form',      wide: false },
-  { id: 6,  src: '/video/Motion Design Reel.mp4',                                category: 'Design',           label: 'Motion Reel',     wide: false },
-  { id: 7,  src: '/video/A Boring Morning but Cinematic -  Sony ZV-E10.mp4',     category: 'Video Production', label: 'Cinematic',       wide: false },
-  { id: 8,  src: '/video/tc01.mp4',                                              category: 'Video Production', label: 'Commercial',      wide: true  },
-  { id: 9,  src: '/video/timus01.mp4',                                           category: 'Branding',         label: 'Brand Identity',  wide: false },
-  { id: 10, src: '/video/tl02.mp4',                                              category: 'Social Media',     label: 'Campaign',        wide: false },
-  { id: 11, src: '/video/uu01.mp4',                                              category: 'Branding',         label: 'Product Launch',  wide: false },
-  { id: 12, src: '/video/uu02.mp4',                                              category: 'Design',           label: 'Visual Identity', wide: false },
-  { id: 13, src: '/video/uu03.mp4',                                              category: 'Video Production', label: 'Story Series',    wide: false },
+  { id: 1,  src: 'https://res.cloudinary.com/degjo7mzp/video/upload/f_auto,q_auto,vc_auto/v1777457277/video/Rv01_pv1jcm.mp4',                                              category: 'Social Media',     label: 'Brand Story',     wide: true  },
+  { id: 2,  src: 'https://res.cloudinary.com/degjo7mzp/video/upload/f_auto,q_auto,vc_auto/v1777457258/video/dt01_pgecmt.mp4',                                              category: 'Video Production', label: 'Product Film',    wide: false },
+  { id: 3,  src: 'https://res.cloudinary.com/degjo7mzp/video/upload/f_auto,q_auto,vc_auto/v1777457256/video/en02_jbzvjq.mp4',                                              category: 'Social Media',     label: 'Creator Content', wide: false },
+  { id: 4,  src: 'https://res.cloudinary.com/degjo7mzp/video/upload/f_auto,q_auto,vc_auto/v1777457275/video/Gr3_eaqz0a.mp4',                                               category: 'Social Media',     label: 'Short-Form',      wide: false },
+  { id: 6,  src: 'https://res.cloudinary.com/degjo7mzp/video/upload/f_auto,q_auto,vc_auto/v1777457265/video/Motion_Design_Reel_gsbkvj.mp4',                                category: 'Design',           label: 'Motion Reel',     wide: false },
+  { id: 7,  src: 'https://res.cloudinary.com/degjo7mzp/video/upload/f_auto,q_auto,vc_auto/v1777457616/A_Boring_Morning_but_Cinematic_-_Sony_ZV-E10_vybxqr.mp4',     category: 'Video Production', label: 'Cinematic',       wide: false },
+  { id: 8,  src: 'https://res.cloudinary.com/degjo7mzp/video/upload/f_auto,q_auto,vc_auto/v1777467147/Tc01_dlydtm.mp4',                                              category: 'Video Production', label: 'Commercial',      wide: true  },
+  { id: 9,  src: 'https://res.cloudinary.com/degjo7mzp/video/upload/f_auto,q_auto,vc_auto/v1777457266/video/timus01_dal0gv.mp4',                                           category: 'Branding',         label: 'Brand Identity',  wide: false },
+  { id: 10, src: 'https://res.cloudinary.com/degjo7mzp/video/upload/f_auto,q_auto,vc_auto/v1777457260/video/tl02_opltpf.mp4',                                              category: 'Social Media',     label: 'Campaign',        wide: false },
+  { id: 11, src: 'https://res.cloudinary.com/degjo7mzp/video/upload/f_auto,q_auto,vc_auto/v1777457266/video/uu01_zwkvlp.mp4',                                              category: 'Branding',         label: 'Product Launch',  wide: false },
+  { id: 12, src: 'https://res.cloudinary.com/degjo7mzp/video/upload/f_auto,q_auto,vc_auto/v1777467131/uu02_lr7vgl.mp4',                                              category: 'Design',           label: 'Visual Identity', wide: false },
+  { id: 13, src: 'https://res.cloudinary.com/degjo7mzp/video/upload/f_auto,q_auto,vc_auto/v1777457277/video/uu03_qrt9sn.mp4',                                              category: 'Video Production', label: 'Story Series',    wide: false },
 ];
 
 export default function PortfolioPage() {
@@ -46,9 +46,35 @@ export default function PortfolioPage() {
 
   const filtered = active === 'All' ? WORKS : WORKS.filter(w => w.category === active);
 
+  /* Video performance: IntersectionObserver for lazy load & play/pause */
+  useEffect(() => {
+    const handleIntersection = (entries) => {
+      entries.forEach((entry) => {
+        const video = entry.target;
+        const source = video.querySelector('source');
+
+        if (entry.isIntersecting) {
+          if (source && source.dataset.src && !video.src) {
+            video.src = source.dataset.src;
+            video.load();
+          }
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      });
+    };
+
+    const obs = new IntersectionObserver(handleIntersection, { threshold: 0.05, rootMargin: '100px' });
+    const vids = document.querySelectorAll('.pf-card-video');
+    vids.forEach(v => obs.observe(v));
+
+    return () => obs.disconnect();
+  }, [active, filtered]); // Re-observe when filter changes
+
   return (
     <main className="pf-page">
-
+      {/* ... previous code remains same ... */}
       {/* ── Hero ── */}
       <section className="pf-hero">
         <div className="pf-container">
@@ -100,13 +126,15 @@ export default function PortfolioPage() {
                 className={`pf-card${item.wide ? ' pf-card--wide' : ''} pf-reveal`}
               >
                 <video
-                  src={item.src}
-                  autoPlay
+                  className="pf-card-video"
                   loop
                   muted
                   playsInline
-                  className="pf-card-video"
-                />
+                  preload="none"
+                  poster={item.src.replace(/\/upload\/.*?\/(v\d+)/, '/upload/so_auto/$1').replace('.mp4', '.jpg')}
+                >
+                  <source data-src={item.src} type="video/mp4" />
+                </video>
                 <div className="pf-card-overlay">
                   <span className="pf-card-cat">{item.category}</span>
                   <div className="pf-card-foot">
@@ -119,6 +147,7 @@ export default function PortfolioPage() {
           </div>
         </div>
       </section>
+      {/* ... previous code remains same ... */}
 
       {/* ── CTA ── */}
       <section className="pf-cta-section">
