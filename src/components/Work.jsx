@@ -115,6 +115,9 @@ function WorkCard({ c }) {
           muted
           playsInline
           preload="none"
+          controlsList="nodownload nofullscreen noremoteplayback"
+          disablePictureInPicture
+          onContextMenu={(e) => e.preventDefault()}
           poster={c.video.replace(/\/upload\/.*?\/(v\d+)/, '/upload/so_auto/$1').replace('.mp4', '.jpg')}
         >
           <source data-src={c.video} type="video/mp4" />

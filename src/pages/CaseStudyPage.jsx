@@ -165,12 +165,15 @@ export default function CaseStudyPage() {
 
               <div className="cs-study-visual cs-reveal">
                 <div className="cs-video-frame">
-                  <video 
+                  <video
                     className="cs-video"
-                    loop 
-                    muted 
-                    playsInline 
+                    loop
+                    muted
+                    playsInline
                     preload="none"
+                    controlsList="nodownload nofullscreen noremoteplayback"
+                    disablePictureInPicture
+                    onContextMenu={(e) => e.preventDefault()}
                     poster={study.video.replace(/\/upload\/.*?\/(v\d+)/, '/upload/so_auto/$1').replace('.mp4', '.jpg')}
                   >
                     <source data-src={study.video} type="video/mp4" />

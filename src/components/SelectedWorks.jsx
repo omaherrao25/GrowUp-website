@@ -111,12 +111,15 @@ export default function SelectedWorks() {
         <div className="sw-video-marquee-track">
           {[...videos, ...videos, ...videos, ...videos].map((vid, idx) => (
             <div className="sw-card" key={idx}>
-              <video 
+              <video
                 className="sw-video"
-                loop 
-                muted 
-                playsInline 
+                loop
+                muted
+                playsInline
                 preload="none"
+                controlsList="nodownload nofullscreen noremoteplayback"
+                disablePictureInPicture
+                onContextMenu={(e) => e.preventDefault()}
                 poster={vid.replace(/\/upload\/.*?\/(v\d+)/, '/upload/so_auto/$1').replace('.mp4', '.jpg')}
               >
                 <source data-src={vid} type="video/mp4" />

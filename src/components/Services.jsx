@@ -101,6 +101,9 @@ export default function Services() {
                       muted
                       playsInline
                       preload="none"
+                      controlsList="nodownload nofullscreen noremoteplayback"
+                      disablePictureInPicture
+                      onContextMenu={(e) => e.preventDefault()}
                       poster={svc.video.replace(/\/upload\/.*?\/(v\d+)/, '/upload/so_auto/$1').replace('.mp4', '.jpg')}
                     >
                       <source data-src={svc.video} type="video/mp4" />

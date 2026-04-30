@@ -131,6 +131,9 @@ export default function PortfolioPage() {
                   muted
                   playsInline
                   preload="none"
+                  controlsList="nodownload nofullscreen noremoteplayback"
+                  disablePictureInPicture
+                  onContextMenu={(e) => e.preventDefault()}
                   poster={item.src.replace(/\/upload\/.*?\/(v\d+)/, '/upload/so_auto/$1').replace('.mp4', '.jpg')}
                 >
                   <source data-src={item.src} type="video/mp4" />
