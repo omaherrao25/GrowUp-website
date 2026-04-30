@@ -9,7 +9,7 @@ export default function Footer() {
           {/* Left Side: Brand & Description */}
           <div className="footer-left">
             <div className="footer-brand-top">
-              <img src="/logo/g-logo.png" alt="Growup Logo" className="footer-brand-img" />
+              <img src="/favicon.png" alt="Growup Logo" className="footer-brand-img" />
               <Link to="/" className="footer-logo">
                 Grow<span>up.</span>
               </Link>

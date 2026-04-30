@@ -1,6 +1,34 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 
 export default function Services() {
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    const handleIntersection = (entries) => {
+      entries.forEach((entry) => {
+        const video = entry.target;
+        const source = video.querySelector('source');
+
+        if (entry.isIntersecting) {
+          if (source && source.dataset.src && !video.src) {
+            video.src = source.dataset.src;
+            video.load();
+          }
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(handleIntersection, { threshold: 0.1, rootMargin: '100px' });
+    const videoElements = containerRef.current?.querySelectorAll('.svc-thumb-video');
+    
+    videoElements?.forEach((vid) => observer.observe(vid));
+
+    return () => observer.disconnect();
+  }, []);
+
   const services = [
     {
       num: "(01)",
@@ -12,7 +40,7 @@ export default function Services() {
         "Community growth",
         "Platform campaigns",
       ],
-      video: "/video/tl02.mp4",
+      video: "https://res.cloudinary.com/degjo7mzp/video/upload/f_auto:low,q_auto,vc_auto/v1777457260/video/tl02_opltpf.mp4",  
     },
     {
       num: "(02)",
@@ -24,7 +52,7 @@ export default function Services() {
         "Editing, sound & delivery",
         "Short & long form",
       ],
-      video: "/video/A Boring Morning but Cinematic -  Sony ZV-E10.mp4",
+      video: "https://res.cloudinary.com/degjo7mzp/video/upload/f_auto,q_auto,vc_auto/v1777457616/A_Boring_Morning_but_Cinematic_-_Sony_ZV-E10_vybxqr.mp4",
     },
     {
       num: "(03)",
@@ -36,7 +64,7 @@ export default function Services() {
         "Pitch decks",
         "Landing page design",
       ],
-      video: "/video/Motion Design Reel.mp4",
+      video: "https://res.cloudinary.com/degjo7mzp/video/upload/f_auto,q_auto,vc_auto/v1777457265/video/Motion_Design_Reel_gsbkvj.mp4",
     },
     {
       num: "(04)",
@@ -48,14 +76,14 @@ export default function Services() {
         "SEO-ready architecture",
         "Performance & speed",
       ],
-      video: "/video-5.mp4",
+      video: "https://res.cloudinary.com/degjo7mzp/video/upload/f_auto,q_auto,vc_auto/v1777457257/video/emursive_website_eu7zrp.mp4",
       videoPos: "center center",
     },
   ];
 
   return (
     <section className="services-section" id="services">
-      <div className="services-inner">
+      <div className="services-inner" ref={containerRef}>
         <div className="services-header-wrapper">
           <h2 className="services-header">WHAT WE DO.</h2>
           <p className="services-sub">Four things. One team. Zero excuses.</p>
@@ -68,13 +96,15 @@ export default function Services() {
                 {svc.video && (
                   <div className="svc-thumb">
                     <video
-                      src={svc.video}
-                      autoPlay
+                      className="svc-thumb-video"
                       loop
                       muted
                       playsInline
-                      className="svc-thumb-video"
-                    />
+                      preload="none"
+                      poster={svc.video.replace(/\/upload\/.*?\/(v\d+)/, '/upload/so_auto/$1').replace('.mp4', '.jpg')}
+                    >
+                      <source data-src={svc.video} type="video/mp4" />
+                    </video>
                   </div>
                 )}
                 <h3 className="svc-title">{svc.title}</h3>
