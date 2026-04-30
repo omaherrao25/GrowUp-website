@@ -6,7 +6,7 @@ const CATEGORIES = ['All', 'Social Media', 'Video Production', 'Design', 'Brandi
 const WORKS = [
   { id: 1,  src: 'https://res.cloudinary.com/degjo7mzp/video/upload/f_auto,q_auto,vc_auto/v1777457277/video/Rv01_pv1jcm.mp4',                                              category: 'Social Media',     label: 'Brand Story',     wide: true  },
   { id: 2,  src: 'https://res.cloudinary.com/degjo7mzp/video/upload/f_auto,q_auto,vc_auto/v1777457258/video/dt01_pgecmt.mp4',                                              category: 'Video Production', label: 'Product Film',    wide: false },
-  { id: 3,  src: 'https://res.cloudinary.com/degjo7mzp/video/upload/f_auto,q_auto,vc_auto/v1777457257/video/emursive_website_eu7zrp.mp4',                                              category: 'Social Media',     label: 'Creator Content', wide: false },
+  { id: 3,  src: 'https://res.cloudinary.com/degjo7mzp/video/upload/f_auto,q_auto,vc_auto/v1777457256/video/en02_jbzvjq.mp4',                                              category: 'Social Media',     label: 'Creator Content', wide: false },
   { id: 4,  src: 'https://res.cloudinary.com/degjo7mzp/video/upload/f_auto,q_auto,vc_auto/v1777457275/video/Gr3_eaqz0a.mp4',                                               category: 'Social Media',     label: 'Short-Form',      wide: false },
   { id: 6,  src: 'https://res.cloudinary.com/degjo7mzp/video/upload/f_auto,q_auto,vc_auto/v1777457265/video/Motion_Design_Reel_gsbkvj.mp4',                                category: 'Design',           label: 'Motion Reel',     wide: false },
   { id: 7,  src: 'https://res.cloudinary.com/degjo7mzp/video/upload/f_auto,q_auto,vc_auto/v1777457616/A_Boring_Morning_but_Cinematic_-_Sony_ZV-E10_vybxqr.mp4',     category: 'Video Production', label: 'Cinematic',       wide: false },
@@ -65,7 +65,7 @@ export default function PortfolioPage() {
       });
     };
 
-    const obs = new IntersectionObserver(handleIntersection, { threshold: 0.1, rootMargin: '100px' });
+    const obs = new IntersectionObserver(handleIntersection, { threshold: 0.05, rootMargin: '100px' });
     const vids = document.querySelectorAll('.pf-card-video');
     vids.forEach(v => obs.observe(v));
 

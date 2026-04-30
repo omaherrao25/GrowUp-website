@@ -21,7 +21,7 @@ export default function Services() {
       });
     };
 
-    const observer = new IntersectionObserver(handleIntersection, { threshold: 0.1, rootMargin: '100px' });
+    const observer = new IntersectionObserver(handleIntersection, { threshold: 0.05, rootMargin: '100px' });
     const videoElements = containerRef.current?.querySelectorAll('.svc-thumb-video');
     
     videoElements?.forEach((vid) => observer.observe(vid));
@@ -40,7 +40,7 @@ export default function Services() {
         "Community growth",
         "Platform campaigns",
       ],
-      video: "https://res.cloudinary.com/degjo7mzp/video/upload/f_auto:low,q_auto,vc_auto/v1777457260/video/tl02_opltpf.mp4",  
+      video: "https://res.cloudinary.com/degjo7mzp/video/upload/f_auto,q_auto,vc_auto/v1777457260/video/tl02_opltpf.mp4",  
     },
     {
       num: "(02)",
@@ -76,7 +76,7 @@ export default function Services() {
         "SEO-ready architecture",
         "Performance & speed",
       ],
-      video: "https://res.cloudinary.com/degjo7mzp/video/upload/f_auto,q_auto,vc_auto/v1777457257/video/emursive_website_eu7zrp.mp4",
+      video: "https://res.cloudinary.com/degjo7mzp/video/upload/f_auto,q_auto,vc_auto/v1777457256/video/en02_jbzvjq.mp4",
       videoPos: "center center",
     },
   ];

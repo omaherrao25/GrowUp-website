@@ -76,7 +76,7 @@ const STUDIES = [
     client: 'EUNORA Physiotherapy',
     category: 'Healthcare',
     title: 'Clinic turned into the most visible physio brand in the city.',
-    video: 'https://res.cloudinary.com/degjo7mzp/video/upload/f_auto,q_auto,vc_auto/v1777457257/video/emursive_website_eu7zrp.mp4',
+    video: 'https://res.cloudinary.com/degjo7mzp/video/upload/f_auto,q_auto,vc_auto/v1777457256/video/en02_jbzvjq.mp4',
     context: [
       'A physiotherapy clinic with expert practitioners but zero online visibility',
       'Relying entirely on word-of-mouth with no sustainable digital acquisition channel',
@@ -128,7 +128,7 @@ export default function CaseStudyPage() {
           }
         });
       },
-      { threshold: 0.1, rootMargin: '100px' }
+      { threshold: 0.05, rootMargin: '100px' }
     );
     document.querySelectorAll('.cs-video').forEach(vid => videoObserver.observe(vid));
 
