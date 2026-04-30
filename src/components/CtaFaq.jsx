@@ -5,12 +5,12 @@ const CLIENT_COUNTRIES = ['India', 'USA', 'UK', 'Australia', 'UAE', 'Canada'];
 
 /* Percentage positions on the world_map.jpg (Mercator projection) */
 const MARKERS = [
-  { id: 'Canada', top: '21%', left: '23%', label: 'Canada' },
-  { id: 'USA', top: '33%', left: '21%', label: 'USA' },
-  { id: 'UK', top: '24%', left: '48%', label: 'UK' },
-  { id: 'UAE', top: '39%', left: '63%', label: 'UAE' },
-  { id: 'India', top: '43%', left: '68%', label: 'India' },
-  { id: 'Australia', top: '65%', left: '81%', label: 'Australia' },
+  { id: 'Canada', top: '36%', left: '18%', label: 'Canada' },
+  { id: 'USA', top: '45%', left: '23%', label: 'USA' },
+  { id: 'UK', top: '38%', left: '45%', label: 'UK' },
+  { id: 'UAE', top: '54%', left: '60%', label: 'UAE' },
+  { id: 'India', top: '55%', left: '66%', label: 'India' },
+  { id: 'Australia', top: '72%', left: '78%', label: 'Australia' },
 ];
 
 export default function CtaFaq() {
