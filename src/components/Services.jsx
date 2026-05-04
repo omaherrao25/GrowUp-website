@@ -76,7 +76,7 @@ export default function Services() {
         "SEO-ready architecture",
         "Performance & speed",
       ],
-      video: "https://res.cloudinary.com/degjo7mzp/video/upload/f_auto,q_auto,vc_auto/v1777457256/video/en02_jbzvjq.mp4",
+      video: "https://res.cloudinary.com/degjo7mzp/video/upload/f_auto,q_auto,vc_auto/v1777457257/video/emursive_website_eu7zrp.mp4",
       videoPos: "center center",
     },
   ];
