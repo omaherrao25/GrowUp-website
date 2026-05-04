@@ -36,8 +36,8 @@
   /* Layout */
   --nav-h:        70px;
   --container:    1400px;
-  --section-v:    7rem;
-  --section-v-sm: 5rem;
+  --section-v:    4.5rem;
+  --section-v-sm: 3rem;
 
   /* Typography scale — refined for premium feel */
   --text-xs:    0.65rem;   /* 10.4px  — labels, legal */
@@ -154,7 +154,7 @@ body {
 
 /* Push nav and hero content below banner to maintain spacing */
 body.banner-visible .gu-nav { top: 44px; }
-body.banner-visible .gu-hero { padding-top: 44px; }
+body.banner-visible .gu-hero { padding-top: 15px; }
 /* ── Modal overlay ── */
 .db-overlay {
   position: fixed;
@@ -328,7 +328,7 @@ body.banner-visible .gu-hero { padding-top: 44px; }
   .db-bar-inner { flex-wrap: wrap; gap: 0.45rem; justify-content: center; }
   .db-pill { display: none; }
   body.banner-visible .gu-nav { top: 52px; }
-  body.banner-visible .gu-hero { padding-top: 52px; }
+  body.banner-visible .gu-hero { padding-top: 18px; }
   .db-form-row { grid-template-columns: 1fr; }
   .db-modal { padding: 2.25rem 1.5rem 1.75rem; }
 }
@@ -860,7 +860,7 @@ body.banner-visible .gu-hero { padding-top: 44px; }
    GALLERY
 ───────────────────────────────────────────── */
 .gallery-section {
-  padding: 4rem 0 5rem;
+  padding: 2.5rem 0 3rem;
   overflow: hidden;
 }
 
@@ -946,7 +946,7 @@ body.banner-visible .gu-hero { padding-top: 44px; }
    VALUE PROP
 ───────────────────────────────────────────── */
 .value-section {
-  padding: 8rem 2rem;
+  padding: 4.5rem 2rem;
   text-align: center;
   background: var(--dark);
   border-top: 1px solid var(--border);
@@ -1023,7 +1023,7 @@ body.banner-visible .gu-hero { padding-top: 44px; }
    GLOBAL
 ───────────────────────────────────────────── */
 .global-section {
-  padding: 8rem 2rem;
+  padding: 4.5rem 2rem;
   text-align: center;
   overflow: hidden;
 }
@@ -1110,7 +1110,7 @@ body.banner-visible .gu-hero { padding-top: 44px; }
    CREATIVE EXCELLENCE
 ───────────────────────────────────────────── */
 .creative-section {
-  padding: 10rem 2rem;
+  padding: 5.5rem 2rem;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -1154,7 +1154,7 @@ body.banner-visible .gu-hero { padding-top: 44px; }
    CONTACT
 ───────────────────────────────────────────── */
 .contact-section {
-  padding: 8rem 2rem;
+  padding: 4.5rem 2rem;
   border-top: 1px solid var(--border);
 }
 
@@ -2182,7 +2182,7 @@ body.banner-visible .gu-hero { padding-top: 44px; }
 ───────────────────────────────────────────── */
 .dist-section {
   background: #000;
-  padding: 10rem 4%;
+  padding: 5.5rem 4%;
   text-align: center;
   color: #fff;
 }
@@ -3070,7 +3070,7 @@ body.banner-visible .gu-hero { padding-top: 44px; }
    PROBLEM SECTION
 ───────────────────────────────────────────── */
 .problem-section {
-  padding: clamp(5rem, 9vw, 8rem) 6%;
+  padding: clamp(3rem, 6vw, 4.5rem) 6%;
   background:
     radial-gradient(ellipse at 80% 10%, rgba(178, 227, 85, 0.18) 0%, transparent 45%),
     radial-gradient(ellipse at 10% 90%, rgba(178, 227, 85, 0.08) 0%, transparent 40%),
@@ -3210,7 +3210,7 @@ body.banner-visible .gu-hero { padding-top: 44px; }
 
 @media (max-width: 600px) {
   .problem-section {
-    padding: 4rem 6% 4.5rem;
+    padding: 2.5rem 6% 3rem;
   }
 
   .problem-title {
@@ -3944,7 +3944,7 @@ body.banner-visible .gu-hero { padding-top: 44px; }
 }
 
 @media (max-width: 768px) {
-  section { padding: 4rem 5% !important; }
+  section { padding: 2.5rem 5% !important; }
   .gu-nav-inner { padding: 0.6rem 1.15rem !important; }
   .sw-card { width: 155px !important; height: 275px !important; }
   .selected-works { min-height: 110vh !important; }
