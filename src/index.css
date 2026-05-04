@@ -1373,22 +1373,21 @@ body.banner-visible .gu-hero { padding-top: 44px; }
 .selected-works {
   position: relative;
   background: #000;
-  min-height: 160vh;
+  min-height: auto;
   overflow: visible;
   z-index: 2;
 }
 
 .sw-video-marquee-container {
   width: 100%;
-  min-height: 100vh;
-  position: sticky;
-  top: 0;
+  min-height: auto;
+  position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   overflow: hidden;
-  padding: clamp(1.4rem, 3.2vw, 2.4rem) 0 2rem;
+  padding: 0 0 2rem 0;
   background: #000;
   z-index: 2;
   will-change: transform;
@@ -4495,13 +4494,13 @@ body.banner-visible .gu-hero { padding-top: 44px; }
 
   /* -- Selected Works: Reduce black background to match video size -- */
   .selected-works {
-    min-height: 480px !important;
-    padding: 2rem 0 !important;
+    min-height: auto !important;
+    padding: 0 !important;
   }
   .sw-video-marquee-container {
-    min-height: 400px !important;
+    min-height: auto !important;
     position: relative !important;
-    padding: 1.5rem 0 !important;
+    padding: 0 0 1rem 0 !important;
     justify-content: center !important;
   }
   .sw-card { width: 170px; height: 302px; border-radius: 12px !important; }
@@ -4564,8 +4563,8 @@ body.banner-visible .gu-hero { padding-top: 44px; }
 
   /* SW cards: smaller for tiny screens */
   .sw-card { width: 145px; height: 258px; }
-  .selected-works { min-height: 400px !important; }
-  .sw-video-marquee-container { min-height: 350px !important; }
+  .selected-works { min-height: auto !important; }
+  .sw-video-marquee-container { min-height: auto !important; }
 }
 
 /* ─── VERY SMALL: 380px ─── */

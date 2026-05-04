@@ -1,9 +1,16 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
 export default function SelectedWorks() {
   const sectionRef = useRef(null);
   const containerRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ['start end', 'end start'],
@@ -82,7 +89,7 @@ export default function SelectedWorks() {
   ];
 
   return (
-    <section className="selected-works" id="selected-works" ref={sectionRef}>
+    <section className="selected-works" id="selected-works" ref={sectionRef} style={{ overflow: 'hidden', padding: '16px 0' }}>
       <motion.div
         ref={containerRef}
         className="sw-video-marquee-container video-section"
