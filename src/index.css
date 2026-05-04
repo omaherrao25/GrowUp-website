@@ -152,9 +152,9 @@ body {
 }
 .db-dismiss:hover { color: rgba(255, 255, 255, 0.85); }
 
-/* Push nav below banner */
+/* Push nav and hero content below banner to maintain spacing */
 body.banner-visible .gu-nav { top: 44px; }
-
+body.banner-visible .gu-hero { padding-top: 44px; }
 /* ── Modal overlay ── */
 .db-overlay {
   position: fixed;
@@ -328,6 +328,7 @@ body.banner-visible .gu-nav { top: 44px; }
   .db-bar-inner { flex-wrap: wrap; gap: 0.45rem; justify-content: center; }
   .db-pill { display: none; }
   body.banner-visible .gu-nav { top: 52px; }
+  body.banner-visible .gu-hero { padding-top: 52px; }
   .db-form-row { grid-template-columns: 1fr; }
   .db-modal { padding: 2.25rem 1.5rem 1.75rem; }
 }

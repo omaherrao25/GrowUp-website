@@ -4,9 +4,7 @@ import React, { useState, useEffect } from 'react';
 const FORMSPREE_URL = 'https://formspree.io/f/xpqkgbeb';
 
 export default function DiscountBanner() {
-  const [dismissed, setDismissed] = useState(
-    () => localStorage.getItem('discount-banner-v1') === 'true'
-  );
+  const [dismissed, setDismissed] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -30,7 +28,6 @@ export default function DiscountBanner() {
   const dismiss = () => {
     setDismissed(true);
     setModalOpen(false);
-    localStorage.setItem('discount-banner-v1', 'true');
   };
 
   const openModal = () => { setError(''); setModalOpen(true); };

@@ -8,19 +8,6 @@ export default function Hero() {
 
   useEffect(() => {
     setCtaLink(getCtaLink());
-    const handleMouseMove = (e) => {
-      if (!bgRef.current) return;
-      const { innerWidth, innerHeight } = window;
-      // Calculate mouse position relative to center (from -1 to 1)
-      const x = (e.clientX / innerWidth - 0.5) * 2;
-      const y = (e.clientY / innerHeight - 0.5) * 2;
-
-      // Move background slightly in opposite direction
-      bgRef.current.style.transform = `translate(${x * -20}px, ${y * -20}px)`;
-    };
-
-    window.addEventListener('mousemove', handleMouseMove, { passive: true });
-    return () => window.removeEventListener('mousemove', handleMouseMove, { passive: true });
   }, []);
 
   return (
