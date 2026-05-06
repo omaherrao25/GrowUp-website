@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import Nav from './components/Nav';
 import DiscountBanner from './components/DiscountBanner';
 import Footer from './components/Footer';
@@ -45,6 +46,7 @@ function App() {
   useParallax();
 
   return (
+    <HelmetProvider>
     <Router>
       <ScrollManager />
       <DiscountBanner />
@@ -61,6 +63,7 @@ function App() {
       </Routes>
       <Footer />
     </Router>
+    </HelmetProvider>
   );
 }
 

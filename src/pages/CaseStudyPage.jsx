@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { getCtaLink } from '../utils/ctaLink';
 
 const STUDIES = [
@@ -139,6 +140,12 @@ export default function CaseStudyPage() {
   }, []);
 
   return (
+    <>
+      <Helmet>
+        <title>Case Studies — Real Brands, Real Results | Grow Up Media</title>
+        <meta name="description" content="See how Grow Up Media helped TIMUS, Usha Infotech, Rahul Jain, and EUNORA Physiotherapy scale with strategic content. Real results across real industries." />
+        <link rel="canonical" href="https://growupmedia.in/case-study" />
+      </Helmet>
     <main className="cs-page">
 
       {/* Hero — dark */}
@@ -243,5 +250,6 @@ export default function CaseStudyPage() {
       </section>
 
     </main>
+    </>
   );
 }

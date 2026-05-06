@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { getCtaLink } from '../utils/ctaLink';
 
 const CATEGORIES = ['All', 'Social Media', 'Video Production', 'Design', 'Branding'];
@@ -73,6 +74,12 @@ export default function PortfolioPage() {
   }, [active, filtered]); // Re-observe when filter changes
 
   return (
+    <>
+      <Helmet>
+        <title>Portfolio — Creative Work by Grow Up Media</title>
+        <meta name="description" content="Browse Grow Up Media's portfolio — social media campaigns, cinematic video production, brand identity, and design across 13+ projects." />
+        <link rel="canonical" href="https://growupmedia.in/portfolio" />
+      </Helmet>
     <main className="pf-page">
       {/* ... previous code remains same ... */}
       {/* ── Hero ── */}
@@ -171,5 +178,6 @@ export default function PortfolioPage() {
       </section>
 
     </main>
+    </>
   );
 }
