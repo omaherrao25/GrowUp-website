@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import Nav from './components/Nav';
 import DiscountBanner from './components/DiscountBanner';
 import Footer from './components/Footer';
@@ -57,8 +57,7 @@ function App() {
         <Route path="/portfolio" element={<PortfolioPage />} />
         <Route path="/privacy" element={<PrivacyPolicyPage />} />
         <Route path="/terms" element={<TermsPage />} />
-        {/* Catch-all: redirect unknown routes to home */}
-        <Route path="*" element={<Home />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       <Footer />
     </Router>
