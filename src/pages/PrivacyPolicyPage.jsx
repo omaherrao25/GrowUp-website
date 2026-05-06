@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 
 const sections = [
@@ -183,6 +184,12 @@ By accessing or using our website and services, you agree to the terms outlined 
 
 export default function PrivacyPolicyPage() {
   return (
+    <>
+      <Helmet>
+        <title>Privacy Policy | Grow Up Media</title>
+        <meta name="description" content="Read Grow Up Media's privacy policy to understand how we collect, use, and protect your personal information." />
+        <link rel="canonical" href="https://growupmedia.in/privacy" />
+      </Helmet>
     <div className="legal-page page-padding">
       <div className="legal-container">
 
@@ -252,5 +259,6 @@ export default function PrivacyPolicyPage() {
 
       </div>
     </div>
+    </>
   );
 }

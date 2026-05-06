@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 
 const sections = [
@@ -245,6 +246,12 @@ By accessing our website at www.growupmedia.com, signing a service agreement, ma
 
 export default function TermsPage() {
   return (
+    <>
+      <Helmet>
+        <title>Terms of Service | Grow Up Media</title>
+        <meta name="description" content="Review the terms and conditions governing your use of Grow Up Media's website and services." />
+        <link rel="canonical" href="https://growupmedia.in/terms" />
+      </Helmet>
     <div className="legal-page page-padding">
       <div className="legal-container">
 
@@ -321,5 +328,6 @@ export default function TermsPage() {
 
       </div>
     </div>
+    </>
   );
 }
